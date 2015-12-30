@@ -7,8 +7,19 @@ use Kaishiyoku\Menu\MenuHelper;
 
 class MenuContainer implements Renderable
 {
+    /**
+     * @var string
+     */
     private $name;
+
+    /**
+     * @var Collection
+     */
     private $entries;
+
+    /**
+     * @var array
+     */
     private $attributes;
 
     /**

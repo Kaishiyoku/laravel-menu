@@ -16,7 +16,9 @@ class MenuHelper
     }
 
     /**
-     * @param $name
+     * Checks if the given route name is the current one.
+     *
+     * @param string $name
      * @return bool
      */
     public static function isCurrentRoute($name)

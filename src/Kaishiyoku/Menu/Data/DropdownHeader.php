@@ -4,8 +4,14 @@ use Illuminate\Contracts\Support\Renderable;
 
 class DropdownHeader extends MenuEntry implements Renderable
 {
+    /**
+     * @var string
+     */
     private $title;
 
+    /**
+     * @param string $title
+     */
     public function __construct($title)
     {
         $this->title = $title;

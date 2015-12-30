@@ -7,10 +7,29 @@ use Kaishiyoku\Menu\MenuHelper;
 
 class Dropdown extends MenuEntry implements Renderable
 {
+    /**
+     * @var Collection
+     */
     private $entries;
+
+    /**
+     * @var string
+     */
     private $title;
+
+    /**
+     * @var string
+     */
     private $name;
+
+    /**
+     * @var array
+     */
     private $parameters;
+
+    /**
+     * @var array
+     */
     private $attributes;
 
     /**

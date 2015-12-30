@@ -5,13 +5,28 @@ use Illuminate\Contracts\Support\Renderable;
 
 class Link extends MenuEntry implements Renderable
 {
+    /**
+     * @var string
+     */
     private $name;
+
+    /**
+     * @var string
+     */
     private $title;
+
+    /**
+     * @var array
+     */
     private $parameters;
+
+    /**
+     * @var array
+     */
     private $attributes;
 
     /**
-     * @param string$name
+     * @param string $name
      * @param string|null $title
      * @param array $parameters
      * @param array $attributes

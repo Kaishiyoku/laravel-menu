@@ -11,8 +11,14 @@ use Kaishiyoku\Menu\Exceptions\MenuNotFoundException;
 
 class Menu
 {
+    /**
+     * @var string
+     */
     const DEFAULT_MENU_NAME = 'DEFAULT';
 
+    /**+
+     * @var Collection
+     */
     private $menus;
 
     public function __construct()
@@ -21,12 +27,14 @@ class Menu
     }
 
     /**
-     * @param null $name
-     * @param null $entries
+     * Adds a new menu container.
+     *
+     * @param string|null $name
+     * @param array $entries
      * @param array $attributes
      * @throws MenuExistsException
      */
-    public function add($name = null, $entries = null, $attributes = [])
+    public function add($name = null, $entries = [], $attributes = [])
     {
         if (empty($name)) {
             $name = self::DEFAULT_MENU_NAME;
@@ -49,38 +57,44 @@ class Menu
     }
 
     /**
-     * @param null $entries
+     * Adds a new menu container under the default name.
+     *
+     * @param array $entries
      * @param array $attributes
      * @throws MenuExistsException
      */
-    public function addDefault($entries = null, $attributes = [])
+    public function addDefault($entries = [], $attributes = [])
     {
         $this->add(null, $entries, $attributes);
     }
 
     /**
-     * @param $name
-     * @param null $title
+     * Returns a new html anchor.
+     *
+     * @param string, $routeName
+     * @param string|null $title
      * @param array $parameters
      * @param array $attributes
      * @return Link
      */
-    public function link($name, $title = null, $parameters = [], $attributes = [])
+    public function link($routeName, $title = null, $parameters = [], $attributes = [])
     {
-        return new Link($name, $title, $parameters, $attributes);
+        return new Link($routeName, $title, $parameters, $attributes);
     }
 
     /**
-     * @param $entries
-     * @param $url
-     * @param null $title
+     * Returns a new html ul-like dropdown menu with sub-elements.
+     *
+     * @param array $entries
+     * @param string $title
+     * @param string|null $name
+     * @param array $parameters
      * @param array $attributes
-     * @param null $secure
      * @return Dropdown
      */
-    public function dropdown($entries, $url, $title = null, $attributes = array(), $secure = null)
+    public function dropdown($entries, $title, $name = null, $parameters = [], $attributes = [])
     {
-        return new Dropdown($entries, $url, $title, $attributes, $secure);
+        return new Dropdown($entries, $title, $name, $parameters, $attributes);
     }
 
     /**
@@ -92,7 +106,7 @@ class Menu
     }
 
     /**
-     * @param $title
+     * @param string $title
      * @return DropdownHeader
      */
     public function dropdownHeader($title)
@@ -101,9 +115,9 @@ class Menu
     }
 
     /**
-     * Get the evaluated contents of the specified navbar.
+     * Get the evaluated contents of the specified menu container.
      *
-     * @param null $menuName
+     * @param string|null $menuName
      * @return string
      * @throws MenuNotFoundException
      */
