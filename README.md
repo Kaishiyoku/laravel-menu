@@ -9,6 +9,7 @@ Table of contents
     * [Composer](#composer)
     * [Laravel Configuration](#laravel-configuration)
   * [Usage](#usage)
+  * [Look & Feel](#look--feel)
 
 
 General
@@ -101,7 +102,7 @@ Route::group(['middleware' => ['web']], function () {
 ```
 
 To display the configured menus you have to call the render function somewhere in your Blade template:
-```blade
+```html
 <div id="navbar" class="collapse navbar-collapse">
     {!! Menu::render() !!}
 
@@ -114,3 +115,10 @@ The menus must have unique names, otherwise an exception will be thrown.
 
 The result would look like this:
 ![Screenshot 1](https://github.com/Kaishiyoku/laravel-menu/blob/master/screenshots/screenshot1.png "Basic menu implementation")
+
+
+Look & Feel
+===========
+The default look and feel is based on Bootstrap 3, but you can change some of the CSS classes and attributes from outside (see the code snippets above).
+
+If you have any issues feel free to open a ticket.
