@@ -24,7 +24,7 @@ class MenuNotFoundException extends Exception
     }
 
     /**
-     * Get the menu name which was not found.
+     * Get the menu name.
      *
      * @return string
      */

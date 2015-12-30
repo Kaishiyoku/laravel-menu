@@ -15,6 +15,10 @@ class MenuHelper
 
     }
 
+    /**
+     * @param $name
+     * @return bool
+     */
     public static function isCurrentRoute($name)
     {
         return Route::currentRouteName() == $name;

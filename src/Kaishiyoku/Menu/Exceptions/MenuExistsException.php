@@ -24,7 +24,7 @@ class MenuExistsException extends Exception
     }
 
     /**
-     * Get the menu name which already exists.
+     * Get the menu name.
      *
      * @return string
      */

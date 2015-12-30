@@ -11,8 +11,8 @@ class Link extends MenuEntry implements Renderable
     private $attributes;
 
     /**
-     * @param $name
-     * @param null $title
+     * @param string$name
+     * @param string|null $title
      * @param array $parameters
      * @param array $attributes
      */
@@ -39,6 +39,8 @@ class Link extends MenuEntry implements Renderable
     }
 
     /**
+     * Get the link's route name.
+     *
      * @return string
      */
     public function getName()

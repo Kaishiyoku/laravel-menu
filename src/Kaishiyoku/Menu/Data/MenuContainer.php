@@ -12,8 +12,8 @@ class MenuContainer implements Renderable
     private $attributes;
 
     /**
-     * @param null $name
-     * @param $entries
+     * @param string|null $name
+     * @param array $entries
      * @param array $attributes
      */
     public function __construct($name = null, $entries, $attributes = [])
@@ -58,6 +58,8 @@ class MenuContainer implements Renderable
     }
 
     /**
+     * Get the name of the menu container.
+     *
      * @return string
      */
     public function getName()

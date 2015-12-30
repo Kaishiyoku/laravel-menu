@@ -14,9 +14,9 @@ class Dropdown extends MenuEntry implements Renderable
     private $attributes;
 
     /**
-     * @param $entries
-     * @param $title
-     * @param null $name
+     * @param array $entries
+     * @param string $title
+     * @param string|null $name
      * @param array $parameters
      * @param array $attributes
      */
@@ -72,6 +72,8 @@ class Dropdown extends MenuEntry implements Renderable
     }
 
     /**
+     * Get all items of the dropdown.
+     *
      * @return Collection
      */
     public function getEntries()
