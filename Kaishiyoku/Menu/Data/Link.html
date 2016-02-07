@@ -108,7 +108,8 @@
     string $name, 
     string|null $title = null, 
     array $parameters = array(), 
-    array $attributes = array())
+    array $attributes = array(), 
+    array $additionalRouteNames = array())
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -123,6 +124,16 @@
                                             <p>Get the link's route name.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAdditionalRouteNames">getAdditionalRouteNames</a>()
+                                            <p>Get additional route names.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -131,7 +142,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_render">
-        <div class="location">at line 47</div>
+        <div class="location">at line 49</div>
         <code>                    
     string
     <strong>render</strong>()</code>
@@ -160,14 +171,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line 34</div>
+        <div class="location">at line 35</div>
         <code>                    
     
     <strong>__construct</strong>(
     string $name, 
     string|null $title = null, 
     array $parameters = array(), 
-    array $attributes = array())</code>
+    array $attributes = array(), 
+    array $additionalRouteNames = array())</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -202,6 +214,13 @@
                 <td>
 </td>
             </tr>
+                    <tr>
+                <td>
+    array</td>
+                <td>$additionalRouteNames</td>
+                <td>
+</td>
+            </tr>
             </table>
 
             
@@ -213,7 +232,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location">at line 61</div>
+        <div class="location">at line 63</div>
         <code>                    
     string
     <strong>getName</strong>()</code>
@@ -229,6 +248,35 @@
         <tr>
             <td>
     string</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAdditionalRouteNames">
+        <div class="location">at line 73</div>
+        <code>                    
+    array
+    <strong>getAdditionalRouteNames</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Get additional route names.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    array</td>
             <td>
 </td>
         </tr>

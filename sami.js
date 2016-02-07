@@ -15,44 +15,45 @@
     };
 
     var searchIndex = [
-                    
+
             {"type": "Namespace", "link": "Kaishiyoku.html", "name": "Kaishiyoku", "doc": "Namespace Kaishiyoku"},{"type": "Namespace", "link": "Kaishiyoku/Menu.html", "name": "Kaishiyoku\\Menu", "doc": "Namespace Kaishiyoku\\Menu"},{"type": "Namespace", "link": "Kaishiyoku/Menu/Data.html", "name": "Kaishiyoku\\Menu\\Data", "doc": "Namespace Kaishiyoku\\Menu\\Data"},{"type": "Namespace", "link": "Kaishiyoku/Menu/Exceptions.html", "name": "Kaishiyoku\\Menu\\Exceptions", "doc": "Namespace Kaishiyoku\\Menu\\Exceptions"},{"type": "Namespace", "link": "Kaishiyoku/Menu/Facades.html", "name": "Kaishiyoku\\Menu\\Facades", "doc": "Namespace Kaishiyoku\\Menu\\Facades"},
-            
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu\\Data", "fromLink": "Kaishiyoku/Menu/Data.html", "link": "Kaishiyoku/Menu/Data/Dropdown.html", "name": "Kaishiyoku\\Menu\\Data\\Dropdown", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\Dropdown", "fromLink": "Kaishiyoku/Menu/Data/Dropdown.html", "link": "Kaishiyoku/Menu/Data/Dropdown.html#method___construct", "name": "Kaishiyoku\\Menu\\Data\\Dropdown::__construct", "doc": "&quot;\n&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\Dropdown", "fromLink": "Kaishiyoku/Menu/Data/Dropdown.html", "link": "Kaishiyoku/Menu/Data/Dropdown.html#method_render", "name": "Kaishiyoku\\Menu\\Data\\Dropdown::render", "doc": "&quot;Get the evaluated contents of the object.&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\Dropdown", "fromLink": "Kaishiyoku/Menu/Data/Dropdown.html", "link": "Kaishiyoku/Menu/Data/Dropdown.html#method_getEntries", "name": "Kaishiyoku\\Menu\\Data\\Dropdown::getEntries", "doc": "&quot;Get all items of the dropdown.&quot;"},
-            
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu\\Data", "fromLink": "Kaishiyoku/Menu/Data.html", "link": "Kaishiyoku/Menu/Data/DropdownDivider.html", "name": "Kaishiyoku\\Menu\\Data\\DropdownDivider", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\DropdownDivider", "fromLink": "Kaishiyoku/Menu/Data/DropdownDivider.html", "link": "Kaishiyoku/Menu/Data/DropdownDivider.html#method_render", "name": "Kaishiyoku\\Menu\\Data\\DropdownDivider::render", "doc": "&quot;Get the evaluated contents of the object.&quot;"},
-            
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu\\Data", "fromLink": "Kaishiyoku/Menu/Data.html", "link": "Kaishiyoku/Menu/Data/DropdownHeader.html", "name": "Kaishiyoku\\Menu\\Data\\DropdownHeader", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\DropdownHeader", "fromLink": "Kaishiyoku/Menu/Data/DropdownHeader.html", "link": "Kaishiyoku/Menu/Data/DropdownHeader.html#method___construct", "name": "Kaishiyoku\\Menu\\Data\\DropdownHeader::__construct", "doc": "&quot;\n&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\DropdownHeader", "fromLink": "Kaishiyoku/Menu/Data/DropdownHeader.html", "link": "Kaishiyoku/Menu/Data/DropdownHeader.html#method_render", "name": "Kaishiyoku\\Menu\\Data\\DropdownHeader::render", "doc": "&quot;Get the evaluated contents of the object.&quot;"},
-            
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu\\Data", "fromLink": "Kaishiyoku/Menu/Data.html", "link": "Kaishiyoku/Menu/Data/Link.html", "name": "Kaishiyoku\\Menu\\Data\\Link", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\Link", "fromLink": "Kaishiyoku/Menu/Data/Link.html", "link": "Kaishiyoku/Menu/Data/Link.html#method___construct", "name": "Kaishiyoku\\Menu\\Data\\Link::__construct", "doc": "&quot;\n&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\Link", "fromLink": "Kaishiyoku/Menu/Data/Link.html", "link": "Kaishiyoku/Menu/Data/Link.html#method_render", "name": "Kaishiyoku\\Menu\\Data\\Link::render", "doc": "&quot;Get the evaluated contents of the object.&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\Link", "fromLink": "Kaishiyoku/Menu/Data/Link.html", "link": "Kaishiyoku/Menu/Data/Link.html#method_getName", "name": "Kaishiyoku\\Menu\\Data\\Link::getName", "doc": "&quot;Get the link&#039;s route name.&quot;"},
-            
+                    {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\Link", "fromLink": "Kaishiyoku/Menu/Data/Link.html", "link": "Kaishiyoku/Menu/Data/Link.html#method_getAdditionalRouteNames", "name": "Kaishiyoku\\Menu\\Data\\Link::getAdditionalRouteNames", "doc": "&quot;Get additional route names.&quot;"},
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu\\Data", "fromLink": "Kaishiyoku/Menu/Data.html", "link": "Kaishiyoku/Menu/Data/MenuContainer.html", "name": "Kaishiyoku\\Menu\\Data\\MenuContainer", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\MenuContainer", "fromLink": "Kaishiyoku/Menu/Data/MenuContainer.html", "link": "Kaishiyoku/Menu/Data/MenuContainer.html#method___construct", "name": "Kaishiyoku\\Menu\\Data\\MenuContainer::__construct", "doc": "&quot;\n&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\MenuContainer", "fromLink": "Kaishiyoku/Menu/Data/MenuContainer.html", "link": "Kaishiyoku/Menu/Data/MenuContainer.html#method_render", "name": "Kaishiyoku\\Menu\\Data\\MenuContainer::render", "doc": "&quot;Get the evaluated contents of the object.&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\MenuContainer", "fromLink": "Kaishiyoku/Menu/Data/MenuContainer.html", "link": "Kaishiyoku/Menu/Data/MenuContainer.html#method_getName", "name": "Kaishiyoku\\Menu\\Data\\MenuContainer::getName", "doc": "&quot;Get the name of the menu container.&quot;"},
-            
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu\\Data", "fromLink": "Kaishiyoku/Menu/Data.html", "link": "Kaishiyoku/Menu/Data/MenuEntry.html", "name": "Kaishiyoku\\Menu\\Data\\MenuEntry", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Data\\MenuEntry", "fromLink": "Kaishiyoku/Menu/Data/MenuEntry.html", "link": "Kaishiyoku/Menu/Data/MenuEntry.html#method_render", "name": "Kaishiyoku\\Menu\\Data\\MenuEntry::render", "doc": "&quot;Get the evaluated contents of the object.&quot;"},
-            
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu\\Exceptions", "fromLink": "Kaishiyoku/Menu/Exceptions.html", "link": "Kaishiyoku/Menu/Exceptions/MenuExistsException.html", "name": "Kaishiyoku\\Menu\\Exceptions\\MenuExistsException", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Exceptions\\MenuExistsException", "fromLink": "Kaishiyoku/Menu/Exceptions/MenuExistsException.html", "link": "Kaishiyoku/Menu/Exceptions/MenuExistsException.html#method___construct", "name": "Kaishiyoku\\Menu\\Exceptions\\MenuExistsException::__construct", "doc": "&quot;\n&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Exceptions\\MenuExistsException", "fromLink": "Kaishiyoku/Menu/Exceptions/MenuExistsException.html", "link": "Kaishiyoku/Menu/Exceptions/MenuExistsException.html#method_getName", "name": "Kaishiyoku\\Menu\\Exceptions\\MenuExistsException::getName", "doc": "&quot;Get the menu name.&quot;"},
-            
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu\\Exceptions", "fromLink": "Kaishiyoku/Menu/Exceptions.html", "link": "Kaishiyoku/Menu/Exceptions/MenuNotFoundException.html", "name": "Kaishiyoku\\Menu\\Exceptions\\MenuNotFoundException", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Exceptions\\MenuNotFoundException", "fromLink": "Kaishiyoku/Menu/Exceptions/MenuNotFoundException.html", "link": "Kaishiyoku/Menu/Exceptions/MenuNotFoundException.html#method___construct", "name": "Kaishiyoku\\Menu\\Exceptions\\MenuNotFoundException::__construct", "doc": "&quot;\n&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Exceptions\\MenuNotFoundException", "fromLink": "Kaishiyoku/Menu/Exceptions/MenuNotFoundException.html", "link": "Kaishiyoku/Menu/Exceptions/MenuNotFoundException.html#method_getName", "name": "Kaishiyoku\\Menu\\Exceptions\\MenuNotFoundException::getName", "doc": "&quot;Get the menu name.&quot;"},
-            
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu\\Facades", "fromLink": "Kaishiyoku/Menu/Facades.html", "link": "Kaishiyoku/Menu/Facades/Menu.html", "name": "Kaishiyoku\\Menu\\Facades\\Menu", "doc": "&quot;\n&quot;"},
-                    
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu", "fromLink": "Kaishiyoku/Menu.html", "link": "Kaishiyoku/Menu/Menu.html", "name": "Kaishiyoku\\Menu\\Menu", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Menu", "fromLink": "Kaishiyoku/Menu/Menu.html", "link": "Kaishiyoku/Menu/Menu.html#method___construct", "name": "Kaishiyoku\\Menu\\Menu::__construct", "doc": "&quot;\n&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Menu", "fromLink": "Kaishiyoku/Menu/Menu.html", "link": "Kaishiyoku/Menu/Menu.html#method_add", "name": "Kaishiyoku\\Menu\\Menu::add", "doc": "&quot;Adds a new menu container.&quot;"},
@@ -62,15 +63,15 @@
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Menu", "fromLink": "Kaishiyoku/Menu/Menu.html", "link": "Kaishiyoku/Menu/Menu.html#method_dropdownDivider", "name": "Kaishiyoku\\Menu\\Menu::dropdownDivider", "doc": "&quot;\n&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Menu", "fromLink": "Kaishiyoku/Menu/Menu.html", "link": "Kaishiyoku/Menu/Menu.html#method_dropdownHeader", "name": "Kaishiyoku\\Menu\\Menu::dropdownHeader", "doc": "&quot;\n&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\Menu", "fromLink": "Kaishiyoku/Menu/Menu.html", "link": "Kaishiyoku/Menu/Menu.html#method_render", "name": "Kaishiyoku\\Menu\\Menu::render", "doc": "&quot;Get the evaluated contents of the specified menu container.&quot;"},
-            
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu", "fromLink": "Kaishiyoku/Menu.html", "link": "Kaishiyoku/Menu/MenuHelper.html", "name": "Kaishiyoku\\Menu\\MenuHelper", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\MenuHelper", "fromLink": "Kaishiyoku/Menu/MenuHelper.html", "link": "Kaishiyoku/Menu/MenuHelper.html#method_isCurrentRoute", "name": "Kaishiyoku\\Menu\\MenuHelper::isCurrentRoute", "doc": "&quot;Checks if the given route name is the current one.&quot;"},
-            
+
             {"type": "Class", "fromName": "Kaishiyoku\\Menu", "fromLink": "Kaishiyoku/Menu.html", "link": "Kaishiyoku/Menu/MenuServiceProvider.html", "name": "Kaishiyoku\\Menu\\MenuServiceProvider", "doc": "&quot;\n&quot;"},
                                                         {"type": "Method", "fromName": "Kaishiyoku\\Menu\\MenuServiceProvider", "fromLink": "Kaishiyoku/Menu/MenuServiceProvider.html", "link": "Kaishiyoku/Menu/MenuServiceProvider.html#method_boot", "name": "Kaishiyoku\\Menu\\MenuServiceProvider::boot", "doc": "&quot;Bootstrap the application events.&quot;"},
                     {"type": "Method", "fromName": "Kaishiyoku\\Menu\\MenuServiceProvider", "fromLink": "Kaishiyoku/Menu/MenuServiceProvider.html", "link": "Kaishiyoku/Menu/MenuServiceProvider.html#method_register", "name": "Kaishiyoku\\Menu\\MenuServiceProvider::register", "doc": "&quot;Register the service provider.&quot;"},
-            
-            
+
+
                                         // Fix trailing commas in the index
         {}
     ];
@@ -188,7 +189,7 @@ $(function() {
         window.location = $(this).val()
     });
 
-    
+
         // Toggle left-nav divs on click
         $('#api-tree .hd span').click(function() {
             $(this).parent().parent().toggleClass('opened');
@@ -212,8 +213,8 @@ $(function() {
             }
         }
 
-    
-    
+
+
         var form = $('#search-form .typeahead');
         form.typeahead({
             hint: true,
@@ -240,7 +241,5 @@ $(function() {
             }
         });
 
-    
+
 });
-
-
