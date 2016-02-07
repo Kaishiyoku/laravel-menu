@@ -30,13 +30,15 @@ class Link extends MenuEntry implements Renderable
      * @param string|null $title
      * @param array $parameters
      * @param array $attributes
+     * @param array $additionalRouteNames
      */
-    public function __construct($name, $title = null, $parameters = [], $attributes = [])
+    public function __construct($name, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [])
     {
         $this->name = $name;
         $this->title = $title;
         $this->parameters = $parameters;
         $this->attributes = $attributes;
+        $this->additionalRouteNames = $additionalRouteNames;
     }
 
     /**
@@ -61,5 +63,15 @@ class Link extends MenuEntry implements Renderable
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get additional route names.
+     *
+     * @return array
+     */
+    public function getAdditionalRouteNames()
+    {
+        return $this->additionalRouteNames;
     }
 }

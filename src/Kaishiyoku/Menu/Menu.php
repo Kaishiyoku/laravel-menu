@@ -75,11 +75,12 @@ class Menu
      * @param string|null $title
      * @param array $parameters
      * @param array $attributes
+     * @param array $additionalRouteNames
      * @return Link
      */
-    public function link($routeName, $title = null, $parameters = [], $attributes = [])
+    public function link($routeName, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [])
     {
-        return new Link($routeName, $title, $parameters, $attributes);
+        return new Link($routeName, $title, $parameters, $attributes, $additionalRouteNames);
     }
 
     /**

@@ -51,12 +51,24 @@ class MenuContainer implements Renderable
 
                 foreach ($entry->getEntries() as $dropdownEntry) {
                     if ($dropdownEntry instanceof Link) {
+                        foreach ($dropdownEntry->getAdditionalRouteNames() as $additionalRouteName) {
+                            if (MenuHelper::isCurrentRoute($additionalRouteName)) {
+                                $entryAttributes['class'] .= ' active';
+                            }
+                        }
+
                         if (MenuHelper::isCurrentRoute($dropdownEntry->getName())) {
                             $entryAttributes['class'] .= ' active';
                         }
                     }
                 }
             } else {
+                foreach ($entry->getAdditionalRouteNames() as $additionalRouteName) {
+                    if (MenuHelper::isCurrentRoute($additionalRouteName)) {
+                        $entryAttributes['class'] = ' active';
+                    }
+                }
+
                 if (MenuHelper::isCurrentRoute($entry->getName())) {
                     $entryAttributes['class'] = 'active';
                 }
