@@ -62,6 +62,8 @@ class MenuContainer implements Renderable
                         }
                     }
                 }
+            } elseif ($entry instanceof Content) {
+                $entryAttributes['class'] = 'navbar-text';
             } else {
                 foreach ($entry->getAdditionalRouteNames() as $additionalRouteName) {
                     if (MenuHelper::isCurrentRoute($additionalRouteName)) {

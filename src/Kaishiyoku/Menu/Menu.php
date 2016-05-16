@@ -1,6 +1,7 @@
 <?php namespace Kaishiyoku\Menu;
 
 use Illuminate\Support\Collection;
+use Kaishiyoku\Menu\Data\Content;
 use Kaishiyoku\Menu\Data\Dropdown;
 use Kaishiyoku\Menu\Data\DropdownDivider;
 use Kaishiyoku\Menu\Data\DropdownHeader;
@@ -113,6 +114,15 @@ class Menu
     public function dropdownHeader($title)
     {
         return new DropdownHeader($title);
+    }
+
+    /**
+     * @param string $content
+     * @return Content
+     */
+    public function content($content)
+    {
+        return new Content($content);
     }
 
     /**
