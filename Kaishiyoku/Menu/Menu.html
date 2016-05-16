@@ -147,7 +147,8 @@
     string|null $title = null, 
     array $parameters = array(), 
     array $attributes = array(), 
-    array $additionalRouteNames = array())
+    array $additionalRouteNames = array(), 
+    bool $unescape = false)
                                             <p>Returns a new html anchor.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -342,7 +343,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_link">
-        <div class="location">at line 82</div>
+        <div class="location">at line 83</div>
         <code>                    
     <a href="../../Kaishiyoku/Menu/Data/Link.html"><abbr title="Kaishiyoku\Menu\Data\Link">Link</abbr></a>
     <strong>link</strong>(
@@ -350,7 +351,8 @@
     string|null $title = null, 
     array $parameters = array(), 
     array $attributes = array(), 
-    array $additionalRouteNames = array())</code>
+    array $additionalRouteNames = array(), 
+    bool $unescape = false)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
@@ -394,6 +396,13 @@
                 <td>
 </td>
             </tr>
+                    <tr>
+                <td>
+    bool</td>
+                <td>$unescape</td>
+                <td>
+</td>
+            </tr>
             </table>
 
             
@@ -416,7 +425,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_dropdown">
-        <div class="location">at line 97</div>
+        <div class="location">at line 98</div>
         <code>                    
     <a href="../../Kaishiyoku/Menu/Data/Dropdown.html"><abbr title="Kaishiyoku\Menu\Data\Dropdown">Dropdown</abbr></a>
     <strong>dropdown</strong>(
@@ -490,7 +499,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_dropdownDivider">
-        <div class="location">at line 105</div>
+        <div class="location">at line 106</div>
         <code>                    
     <a href="../../Kaishiyoku/Menu/Data/DropdownDivider.html"><abbr title="Kaishiyoku\Menu\Data\DropdownDivider">DropdownDivider</abbr></a>
     <strong>dropdownDivider</strong>()</code>
@@ -517,7 +526,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_dropdownHeader">
-        <div class="location">at line 114</div>
+        <div class="location">at line 115</div>
         <code>                    
     <a href="../../Kaishiyoku/Menu/Data/DropdownHeader.html"><abbr title="Kaishiyoku\Menu\Data\DropdownHeader">DropdownHeader</abbr></a>
     <strong>dropdownHeader</strong>(
@@ -557,7 +566,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_content">
-        <div class="location">at line 123</div>
+        <div class="location">at line 124</div>
         <code>                    
     <a href="../../Kaishiyoku/Menu/Data/Content.html"><abbr title="Kaishiyoku\Menu\Data\Content">Content</abbr></a>
     <strong>content</strong>(
@@ -597,7 +606,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_render">
-        <div class="location">at line 135</div>
+        <div class="location">at line 136</div>
         <code>                    
     string
     <strong>render</strong>(
