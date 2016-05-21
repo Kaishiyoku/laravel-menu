@@ -1,5 +1,6 @@
 <?php namespace Kaishiyoku\Menu;
 
+use Collective\Html\HtmlFacade as Html;
 use Illuminate\Support\Collection;
 use Kaishiyoku\Menu\Data\Content;
 use Kaishiyoku\Menu\Data\Dropdown;
@@ -77,12 +78,11 @@ class Menu
      * @param array $parameters
      * @param array $attributes
      * @param array $additionalRouteNames
-     * @param bool $unescape
      * @return Link
      */
-    public function link($routeName, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [], $unescape = false)
+    public function link($routeName, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [])
     {
-        return new Link($routeName, $title, $parameters, $attributes, $additionalRouteNames, $unescape);
+        return new Link($routeName, $title, $parameters, $attributes, $additionalRouteNames);
     }
 
     /**
@@ -144,7 +144,7 @@ class Menu
         })->first();
 
         if ($menu instanceof MenuContainer) {
-            return $menu->render();
+            return MenuHelper::purifyHtml(Html::decode($menu->render()));
         } else {
             throw new MenuNotFoundException($menuName);
         }

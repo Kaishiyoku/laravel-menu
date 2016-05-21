@@ -2,6 +2,7 @@
 
 use Collective\Html\HtmlFacade as Html;
 use Illuminate\Contracts\Support\Renderable;
+use Kaishiyoku\Menu\MenuHelper;
 
 class Link extends MenuEntry implements Renderable
 {
@@ -31,25 +32,19 @@ class Link extends MenuEntry implements Renderable
     private $additionalRouteNames;
 
     /**
-     * @var bool
-     */
-    private $unescape;
-
-    /**
      * @param string $name
      * @param string|null $title
      * @param array $parameters
      * @param array $attributes
      * @param array $additionalRouteNames
      */
-    public function __construct($name, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [], $unescape = false)
+    public function __construct($name, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [])
     {
         $this->name = $name;
         $this->title = $title;
         $this->parameters = $parameters;
         $this->attributes = $attributes;
         $this->additionalRouteNames = $additionalRouteNames;
-        $this->unescape = $unescape;
     }
 
     /**
@@ -63,11 +58,6 @@ class Link extends MenuEntry implements Renderable
             $content = Html::link('#', $this->title, $this->attributes);
         } else {
             $content = Html::linkRoute($this->name, $this->title, $this->parameters, $this->attributes);
-        }
-
-        // unescape string (e.g. when using font awesome)
-        if ($this->unescape) {
-            $content = Html::decode($content);
         }
 
         return $content;
