@@ -78,11 +78,12 @@ class Menu
      * @param array $parameters
      * @param array $attributes
      * @param array $additionalRouteNames
+     * @param bool $isVisible
      * @return Link
      */
-    public function link($routeName, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [])
+    public function link($routeName, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [], $isVisible = true)
     {
-        return new Link($routeName, $title, $parameters, $attributes, $additionalRouteNames);
+        return new Link($routeName, $title, $parameters, $attributes, $additionalRouteNames, $isVisible);
     }
 
     /**
@@ -93,37 +94,41 @@ class Menu
      * @param string|null $name
      * @param array $parameters
      * @param array $attributes
+     * @param bool $isVisible
      * @return Dropdown
      */
-    public function dropdown($entries, $title, $name = null, $parameters = [], $attributes = [])
+    public function dropdown($entries, $title, $name = null, $parameters = [], $attributes = [], $isVisible = true)
     {
-        return new Dropdown($entries, $title, $name, $parameters, $attributes);
+        return new Dropdown($entries, $title, $name, $parameters, $attributes, $isVisible);
     }
 
     /**
+     * @param bool $isVisible
      * @return DropdownDivider
      */
-    public function dropdownDivider()
+    public function dropdownDivider($isVisible = true)
     {
-        return new DropdownDivider();
+        return new DropdownDivider($isVisible);
     }
 
     /**
      * @param string $title
+     * @param bool $isVisible
      * @return DropdownHeader
      */
-    public function dropdownHeader($title)
+    public function dropdownHeader($title, $isVisible = true)
     {
-        return new DropdownHeader($title);
+        return new DropdownHeader($title, $isVisible);
     }
 
     /**
      * @param string $content
+     * @param bool $isVisible
      * @return Content
      */
-    public function content($content)
+    public function content($content, $isVisible = true)
     {
-        return new Content($content);
+        return new Content($content, $isVisible);
     }
 
     /**

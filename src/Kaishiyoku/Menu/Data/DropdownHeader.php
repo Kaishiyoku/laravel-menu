@@ -10,11 +10,18 @@ class DropdownHeader extends MenuEntry implements Renderable
     private $title;
 
     /**
-     * @param string $title
+     * @var bool
      */
-    public function __construct($title)
+    private $isVisible;
+
+    /**
+     * @param string $title
+     * @param bool $isVisible
+     */
+    public function __construct($title, $isVisible = true)
     {
         $this->title = $title;
+        $this->isVisible = $isVisible;
     }
 
     /**
@@ -25,5 +32,13 @@ class DropdownHeader extends MenuEntry implements Renderable
     public function render()
     {
         return $this->title;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVisible()
+    {
+        return $this->isVisible;
     }
 }

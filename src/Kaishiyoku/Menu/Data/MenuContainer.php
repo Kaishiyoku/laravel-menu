@@ -23,15 +23,22 @@ class MenuContainer implements Renderable
     private $attributes;
 
     /**
+     * @var bool
+     */
+    private $isVisible;
+
+    /**
      * @param string|null $name
      * @param array $entries
      * @param array $attributes
+     * @param bool $isVisible
      */
-    public function __construct($name = null, $entries, $attributes = [])
+    public function __construct($name = null, $entries, $attributes = [], $isVisible = true)
     {
         $this->name = $name;
         $this->entries = new Collection($entries);
         $this->attributes = $attributes;
+        $this->isVisible = $isVisible;
     }
 
     /**
@@ -76,7 +83,9 @@ class MenuContainer implements Renderable
                 }
             }
 
-            $output .= '<li ' . Html::attributes($entryAttributes) . '>' . $entry->render() . '</li>';
+            if ($entry->isVisible()) {
+                $output .= '<li ' . Html::attributes($entryAttributes) . '>' . $entry->render() . '</li>';
+            }
         }
 
         return '<ul ' . Html::attributes($this->attributes) . '>' . $output . '</ul>';
@@ -90,5 +99,13 @@ class MenuContainer implements Renderable
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVisible()
+    {
+        return $this->isVisible;
     }
 }

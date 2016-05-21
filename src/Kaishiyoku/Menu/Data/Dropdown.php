@@ -1,4 +1,6 @@
-<?php namespace Kaishiyoku\Menu\Data;
+<?php
+
+namespace Kaishiyoku\Menu\Data;
 
 use Collective\Html\HtmlFacade as Html;
 use Illuminate\Contracts\Support\Renderable;
@@ -33,19 +35,26 @@ class Dropdown extends MenuEntry implements Renderable
     private $attributes;
 
     /**
+     * @var bool
+     */
+    private $isVisible;
+
+    /**
      * @param array $entries
      * @param string $title
      * @param string|null $name
      * @param array $parameters
      * @param array $attributes
+     * @param bool $isVisible
      */
-    public function __construct($entries, $title, $name = null, $parameters = [], $attributes = [])
+    public function __construct($entries, $title, $name = null, $parameters = [], $attributes = [], $isVisible = true)
     {
         $this->entries = new Collection($entries);
         $this->title = $title;
         $this->name = $name;
         $this->parameters = $parameters;
         $this->attributes = $attributes;
+        $this->isVisible = $isVisible;
     }
 
     /**
@@ -76,8 +85,6 @@ class Dropdown extends MenuEntry implements Renderable
             $output .= '<li ' . Html::attributes($entryAttributes) . '>' . $entry->render() . '</li>';
         }
 
-        $link = '';
-
         if (empty($this->name)) {
             $link = Html::link('#', $this->title . '<span class="caret"></span>',
                 ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']);
@@ -86,8 +93,7 @@ class Dropdown extends MenuEntry implements Renderable
                 ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']);
         }
 
-        return
-            Html::decode($link) . '<ul class="dropdown-menu">' . $output . '</ul>';
+        return $link . '<ul class="dropdown-menu">' . $output . '</ul>';
     }
 
     /**
@@ -99,4 +105,14 @@ class Dropdown extends MenuEntry implements Renderable
     {
         return $this->entries;
     }
+
+    /**
+     * @return bool
+     */
+    public function isVisible()
+    {
+        return $this->isVisible;
+    }
+    
+    
 }

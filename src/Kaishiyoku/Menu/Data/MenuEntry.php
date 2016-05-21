@@ -10,4 +10,9 @@ abstract class MenuEntry implements Renderable
      * @return string
      */
     abstract public function render();
+
+    /**
+     * @return bool
+     */
+    abstract public function isVisible();
 }

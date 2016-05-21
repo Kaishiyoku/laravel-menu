@@ -32,19 +32,26 @@ class Link extends MenuEntry implements Renderable
     private $additionalRouteNames;
 
     /**
+     * @var bool
+     */
+    private $isVisible;
+
+    /**
      * @param string $name
      * @param string|null $title
      * @param array $parameters
      * @param array $attributes
      * @param array $additionalRouteNames
+     * @param bool $isVisible
      */
-    public function __construct($name, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [])
+    public function __construct($name, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [], $isVisible = true)
     {
         $this->name = $name;
         $this->title = $title;
         $this->parameters = $parameters;
         $this->attributes = $attributes;
         $this->additionalRouteNames = $additionalRouteNames;
+        $this->isVisible = $isVisible;
     }
 
     /**
@@ -81,5 +88,13 @@ class Link extends MenuEntry implements Renderable
     public function getAdditionalRouteNames()
     {
         return $this->additionalRouteNames;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVisible()
+    {
+        return $this->isVisible;
     }
 }

@@ -1,6 +1,7 @@
-<?php namespace Kaishiyoku\Menu\Data;
+<?php
 
-use Collective\Html\HtmlFacade as Html;
+namespace Kaishiyoku\Menu\Data;
+
 use Illuminate\Contracts\Support\Renderable;
 
 class Content extends MenuEntry implements Renderable
@@ -11,11 +12,18 @@ class Content extends MenuEntry implements Renderable
     private $content;
 
     /**
-     * @param string $content
+     * @var bool
      */
-    public function __construct($content)
+    private $isVisible;
+
+    /**
+     * @param string $content
+     * @param bool $isVisible
+     */
+    public function __construct($content, $isVisible = true)
     {
         $this->content = $content;
+        $this->isVisible = $isVisible;
     }
 
     /**
@@ -26,5 +34,10 @@ class Content extends MenuEntry implements Renderable
     public function render()
     {
         return $this->content;
+    }
+    
+    public function isVisible()
+    {
+        return $this->isVisible;
     }
 }

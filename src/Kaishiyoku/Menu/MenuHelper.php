@@ -1,9 +1,8 @@
 <?php namespace Kaishiyoku\Menu;
 
-use HTMLPurifier;
-use HTMLPurifier_Config;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
+use Kaishiyoku\HtmlPurifier\HtmlPurifier;
 use Kaishiyoku\Menu\Data\Dropdown;
 use Kaishiyoku\Menu\Data\Link;
 use Kaishiyoku\Menu\Data\MenuContainer;
@@ -36,9 +35,8 @@ class MenuHelper
      */
     public static function purifyHtml($value)
     {
-        $htmlPurifierConfig = HTMLPurifier_Config::createDefault();
-        $purifier = new HTMLPurifier($htmlPurifierConfig);
-
+        $purifier = new HtmlPurifier();
+        
         return $purifier->purify($value);
     }
 }
