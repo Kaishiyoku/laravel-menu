@@ -29,14 +29,14 @@ class Menu
     }
 
     /**
-     * Adds a new menu container.
+     * Registers a new menu container.
      *
      * @param string|null $name
      * @param array $entries
      * @param array $attributes
      * @throws MenuExistsException
      */
-    public function add($name = null, $entries = [], $attributes = [])
+    public function register($name = null, $entries = [], $attributes = [])
     {
         if (empty($name)) {
             $name = self::DEFAULT_MENU_NAME;
@@ -59,13 +59,13 @@ class Menu
     }
 
     /**
-     * Adds a new menu container under the default name.
+     * Registers a new menu container under the default name.
      *
      * @param array $entries
      * @param array $attributes
      * @throws MenuExistsException
      */
-    public function addDefault($entries = [], $attributes = [])
+    public function registerDefault($entries = [], $attributes = [])
     {
         $this->add(null, $entries, $attributes);
     }

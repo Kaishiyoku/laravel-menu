@@ -44,13 +44,13 @@ and ```'Menu' => Kaishiyoku\Menu\Facades\Menu::class,``` to the **aliases** arra
 
 Usage
 =====
-Build up a new menu in the **app/Http/routes.php** file (or at any other place where it is being loaded before a Laravel request is being exectued).
+Create the file at **app/Http/menus.php** and build up a new menu inside it.
 
 **Example routes.php:**
 ```php
 <?php
 
-Menu::addDefault([
+Menu::registerDefault([
     Menu::link('home.index', 'Landing Page'),
     Menu::link('home.news', 'News'),
     Menu::link('home.about', 'About'),
@@ -63,7 +63,7 @@ Menu::addDefault([
     ], 'Content')
 ], ['class' => 'nav navbar-nav']);
 
-Menu::add('navbar-right', [
+Menu::register('navbar-right', [
     Menu::link('auth.login', 'Login'),
     Menu::link('auth.register', 'Register')
 ], ['class' => 'nav navbar-nav navbar-right']);

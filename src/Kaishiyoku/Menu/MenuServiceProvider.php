@@ -20,7 +20,7 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function boot(Dispatcher $dispatcher)
     {
-        //
+        $this->registerMenus();
     }
 
     /**
@@ -33,5 +33,15 @@ class MenuServiceProvider extends ServiceProvider
         $this->app->bind('menu', function () {
             return new Menu();
         });
+    }
+
+    // This method can be overridden in a child class
+    public function registerMenus()
+    {
+        // Load the app menus if they're in app/Http/menus.php
+        if (file_exists($file = $this->app['path'].'/Http/menus.php'))
+        {
+            require $file;
+        }
     }
 }
