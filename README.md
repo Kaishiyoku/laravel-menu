@@ -44,9 +44,76 @@ and ```'Menu' => Kaishiyoku\Menu\Facades\Menu::class,``` to the **aliases** arra
 
 Usage
 =====
-Create the file at **app/Http/menus.php** and build up a new menu inside it.
+Create the file at **app/Http/menus.php** and build up a new menu inside it (this only works for simple menus when you don't need any Laravel Facades or other things which have to be there at the request chain first).
 
-**Example routes.php:**
+or
+
+Create a **app/Http/Middleware/Menus.php** middleware and add it to a new middleware group 'menus'. Please don't forget to add the newly created middleware group to your routes.php definitions.
+
+**Example \App\Http\Middleware\Menus.php:**
+```
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Contracts\Auth\Guard;
+use Kaishiyoku\Menu\Facades\Menu;
+
+class Menus
+{
+    /**
+     * The Guard implementation.
+     *
+     * @var Guard
+     */
+    protected $auth;
+
+    /**
+     * Create a new filter instance.
+     *
+     * @param  Guard  $auth
+     * @return void
+     */
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        // Define your menus here
+
+        return $next($request);
+    }
+}
+```
+
+**Edited \App\Http\Kernel:**
+```
+protected $middlewareGroups = [
+    'web' => [
+        // [...]
+    ],
+
+    'menus' => [
+        \App\Http\Middleware\Menus::class,
+    ],
+
+    'api' => [
+        // [...]
+    ],
+ ];
+```
+
+**Example menus.php:**
 ```php
 <?php
 
