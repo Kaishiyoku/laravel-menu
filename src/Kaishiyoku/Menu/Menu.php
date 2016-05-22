@@ -67,7 +67,7 @@ class Menu
      */
     public function registerDefault($entries = [], $attributes = [])
     {
-        $this->add(null, $entries, $attributes);
+        $this->register(null, $entries, $attributes);
     }
 
     /**
