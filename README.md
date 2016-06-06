@@ -200,4 +200,5 @@ MIT (https://github.com/Kaishiyoku/laravel-menu/blob/master/LICENSE)
 
 Author
 ======
-Twitter: [@kaishiyoku](https://twitter.com/kaishiyoku)
+Twitter: [@kaishiyoku](https://twitter.com/kaishiyoku)  
+Website: www.andreas-wiedel.de
