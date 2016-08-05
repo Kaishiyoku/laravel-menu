@@ -78,6 +78,12 @@ class Dropdown extends MenuEntry implements Renderable
                 } else {
                     if (MenuHelper::isCurrentRoute($entry->getName())) {
                         $entryAttributes['class'] = 'active';
+                    } else {
+                        foreach ($entry->getAdditionalRouteNames() as $additionalRouteName) {
+                            if (MenuHelper::isCurrentRoute($additionalRouteName)) {
+                                $entryAttributes['class'] = ' active';
+                            }
+                        }
                     }
                 }
             }
