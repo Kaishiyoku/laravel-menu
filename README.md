@@ -51,7 +51,7 @@ or
 Create a **app/Http/Middleware/Menus.php** middleware and add it to a new middleware group 'menus'. Please don't forget to add the newly created middleware group to your routes.php definitions.
 
 **Example \App\Http\Middleware\Menus.php:**
-```
+```php
 <?php
 
 namespace App\Http\Middleware;
@@ -97,7 +97,7 @@ class Menus
 ```
 
 **Edited \App\Http\Kernel:**
-```
+```php
 protected $middlewareGroups = [
     'web' => [
         // [...]
