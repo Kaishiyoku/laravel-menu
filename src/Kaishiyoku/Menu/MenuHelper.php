@@ -28,6 +28,29 @@ class MenuHelper
     }
 
     /**
+     * Checks if given parameters and the current route's one are equal.
+     *
+     * @param $parameters
+     * @return bool
+     */
+    public static function hasEqualParameters($parameters)
+    {
+        return count(array_diff($parameters, Route::current()->parameters())) == 0;
+    }
+
+    /**
+     * Checks if the given route name and parameters are the current one.
+     *
+     * @param $name
+     * @param $parameters
+     * @return bool
+     */
+    public static function isCurrentRouteWithParameters($name, $parameters)
+    {
+        return self::isCurrentRoute($name) && self::hasEqualParameters($parameters);
+    }
+
+    /**
      * Purifies HTML to help preventing XSS.
      *
      * @param string $value

@@ -81,6 +81,16 @@ class Link extends MenuEntry implements Renderable
     }
 
     /**
+     * Get the link's parameters.
+     *
+     * @return array
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
+
+    /**
      * Get additional route names.
      *
      * @return array
