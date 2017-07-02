@@ -34,9 +34,10 @@ class Menu
      * @param string|null $name
      * @param array $entries
      * @param array $attributes
+     * @param array $navItemClasses
      * @throws MenuExistsException
      */
-    public function register($name = null, $entries = [], $attributes = [])
+    public function register($name = null, $entries = [], $attributes = [], $navItemClasses = [])
     {
         if (empty($name)) {
             $name = self::DEFAULT_MENU_NAME;
@@ -52,7 +53,7 @@ class Menu
         }
 
         if (!$exists) {
-            $this->menus->push(new MenuContainer($name, $entries, $attributes));
+            $this->menus->push(new MenuContainer($name, $entries, $attributes, $navItemClasses));
         } else {
             throw new MenuExistsException($name);
         }
@@ -63,11 +64,12 @@ class Menu
      *
      * @param array $entries
      * @param array $attributes
+     * @param array $navItemClasses
      * @throws MenuExistsException
      */
-    public function registerDefault($entries = [], $attributes = [])
+    public function registerDefault($entries = [], $attributes = [], $navItemClasses = [])
     {
-        $this->register(null, $entries, $attributes);
+        $this->register(null, $entries, $attributes, $navItemClasses);
     }
 
     /**

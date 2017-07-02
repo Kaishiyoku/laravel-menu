@@ -2,7 +2,6 @@
 
 use Collective\Html\HtmlFacade as Html;
 use Illuminate\Contracts\Support\Renderable;
-use Kaishiyoku\Menu\MenuHelper;
 
 class Link extends MenuEntry implements Renderable
 {

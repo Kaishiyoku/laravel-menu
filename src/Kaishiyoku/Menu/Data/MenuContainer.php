@@ -28,17 +28,22 @@ class MenuContainer implements Renderable
     private $isVisible;
 
     /**
+     * @var array
+     */
+    private $navItemClasses;
+
+    /**
      * @param string|null $name
      * @param array $entries
      * @param array $attributes
-     * @param bool $isVisible
+     * @param array $navItemClasses
      */
-    public function __construct($name = null, $entries, $attributes = [], $isVisible = true)
+    public function __construct($name = null, $entries, $attributes = [], $navItemClasses = [])
     {
         $this->name = $name;
         $this->entries = new Collection($entries);
         $this->attributes = $attributes;
-        $this->isVisible = $isVisible;
+        $this->navItemClasses = $navItemClasses;
     }
 
     /**
@@ -72,18 +77,32 @@ class MenuContainer implements Renderable
             } elseif ($entry instanceof Content) {
                 $entryAttributes['class'] = 'navbar-text';
             } else {
+                if (!array_key_exists('class', $entryAttributes)) {
+                    $entryAttributes['class'] = '';
+                }
+
                 foreach ($entry->getAdditionalRouteNames() as $additionalRouteName) {
                     if (MenuHelper::isCurrentRoute($additionalRouteName)) {
-                        $entryAttributes['class'] = ' active';
+                        $entryAttributes['class'] .= ' active';
                     }
                 }
 
                 if (MenuHelper::isCurrentRoute($entry->getName())) {
-                    $entryAttributes['class'] = 'active';
+                    $entryAttributes['class'] .= ' active';
                 }
             }
 
             if ($entry->isVisible()) {
+                if (count($this->navItemClasses) > 0) {
+                    if (!array_key_exists('class', $entryAttributes)) {
+                        $entryAttributes['class'] = '';
+                    }
+
+                    foreach ($this->navItemClasses as $navItemClass) {
+                        $entryAttributes['class'] .= ' ' . $navItemClass;
+                    }
+                }
+
                 $output .= '<li ' . Html::attributes($entryAttributes) . '>' . $entry->render() . '</li>';
             }
         }
