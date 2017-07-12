@@ -207,7 +207,7 @@ The default look and feel is based on Bootstrap 3, but you can change some of th
 
 License
 =======
-MIT (https://github.com/Kaishiyoku/rawwr/blob/master/LICENSE)
+MIT (https://github.com/Kaishiyoku/laravel-menu/blob/master/LICENSE)
 
 
 Author
