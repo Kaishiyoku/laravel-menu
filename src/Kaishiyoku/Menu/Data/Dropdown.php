@@ -75,6 +75,8 @@ class Dropdown extends MenuEntry implements Renderable
             } else {
                 if ($entry instanceof DropdownHeader) {
                     $entryAttributes['class'] = 'dropdown-header';
+                } else if ($entry instanceof Content) {
+                    $entryAttributes['class'] = 'content';
                 } else {
                     if (MenuHelper::isCurrentRouteWithParameters($entry->getName(), $entry->getParameters())) {
                         $entryAttributes['class'] = 'active';
