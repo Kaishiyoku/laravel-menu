@@ -10,6 +10,7 @@ Table of contents
     * [Laravel Configuration](#laravel-configuration)
   * [Usage](#usage)
   * [Look & Feel](#look--feel)
+    * [Bootstrap 4](#bootstrap-4)
   * [License](#license)
   * [Author](#author)
 
@@ -204,6 +205,16 @@ Look & Feel
 ===========
 The default look and feel is based on Bootstrap 3, but you can change some of the CSS classes and attributes from outside (see the code snippets above).
 
+Bootstrap 4
+-----------
+Since version 1.4.0 Bootstrap 4 support has been added. To make it work you have to set the new config object for your menus before setting them up:
+
+```php
+Menu::setConfig(Config::forBootstrap4());
+
+// your menus go here
+Menu::registerDefault([]); // ...
+```
 
 License
 =======
