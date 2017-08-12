@@ -29,9 +29,10 @@ class Content extends MenuEntry implements Renderable
     /**
      * Get the evaluated contents of the object.
      *
+     * @param null|array $customAttributes
      * @return string
      */
-    public function render()
+    public function render($customAttributes = null)
     {
         return $this->content;
     }

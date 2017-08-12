@@ -5,6 +5,7 @@ namespace Kaishiyoku\Menu\Data;
 use Collective\Html\HtmlFacade as Html;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;
+use Kaishiyoku\Menu\Config\Config;
 use Kaishiyoku\Menu\MenuHelper;
 
 class Dropdown extends MenuEntry implements Renderable
@@ -60,13 +61,15 @@ class Dropdown extends MenuEntry implements Renderable
     /**
      * Get the evaluated contents of the object.
      *
+     * @param null|array $customAttributes
      * @return string
      */
-    public function render()
+    public function render($customAttributes = null)
     {
         $output = '';
 
         foreach ($this->entries as $entry) {
+            $isActive = false;
             $entryAttributes = [];
 
             if ($entry instanceof DropdownDivider) {
@@ -80,28 +83,54 @@ class Dropdown extends MenuEntry implements Renderable
                 } else {
                     if (MenuHelper::isCurrentRouteWithParameters($entry->getName(), $entry->getParameters())) {
                         $entryAttributes['class'] = 'active';
+                        $isActive = true;
                     } else {
                         foreach ($entry->getAdditionalRouteNames() as $additionalRouteName) {
                             if (MenuHelper::isCurrentRoute($additionalRouteName)) {
                                 $entryAttributes['class'] = ' active';
+                                $isActive = true;
                             }
                         }
                     }
                 }
             }
 
-            $output .= '<li ' . Html::attributes($entryAttributes) . '>' . $entry->render() . '</li>';
+            if (MenuHelper::getConfig()->getCustomDropdownItemRenderFunction() != null) {
+                $output .= MenuHelper::getConfig()->getCustomDropdownItemRenderFunction()($entry, $isActive);
+            } else {
+                $output .= '<li ' . Html::attributes($entryAttributes) . '>' . $entry->render() . '</li>';
+            }
+        }
+
+        $classes = 'dropdown-toggle';
+
+        if (count(MenuHelper::getConfig()->getAnchorElementClasses()) > 0) {
+            foreach (MenuHelper::getConfig()->getAnchorElementClasses() as $anchorElementClass) {
+                $classes .= ' ' . $anchorElementClass;
+            }
         }
 
         if (empty($this->name)) {
             $link = Html::link('#', $this->title . '<span class="caret"></span>',
-                ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']);
+                ['class' => $classes, 'data-toggle' => 'dropdown']);
         } else {
             $link = Html::linkRoute($this->name, $this->title . '<span class="caret"></span>', $this->parameters,
-                ['class' => 'dropdown-toggle', 'data-toggle' => 'dropdown']);
+                ['class' => $classes, 'data-toggle' => 'dropdown']);
         }
 
-        return $link . '<ul class="dropdown-menu">' . $output . '</ul>';
+        if (MenuHelper::getConfig()->getCustomDropdownContainerRenderFunction() != null) {
+            $additionalClasses = array_key_exists('class', $this->attributes) ? $this->attributes['class'] : null;
+
+            return MenuHelper::getConfig()->getCustomDropdownContainerRenderFunction()($link, $output, $additionalClasses);
+        }
+
+        $dropdownClasses = 'dropdown-menu';
+
+        if (array_key_exists('class', $this->attributes)) {
+            $dropdownClasses = $this->attributes['class'];
+        }
+
+        return $link . '<ul class="' . $dropdownClasses . '">' . $output . '</ul>';
     }
 
     /**

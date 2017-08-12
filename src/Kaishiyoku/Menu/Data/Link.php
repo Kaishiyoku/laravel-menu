@@ -2,6 +2,8 @@
 
 use Collective\Html\HtmlFacade as Html;
 use Illuminate\Contracts\Support\Renderable;
+use Kaishiyoku\Menu\Config\Config;
+use Kaishiyoku\Menu\MenuHelper;
 
 class Link extends MenuEntry implements Renderable
 {
@@ -56,14 +58,31 @@ class Link extends MenuEntry implements Renderable
     /**
      * Get the evaluated contents of the object.
      *
+     * @param null|array $customAttributes
      * @return string
      */
-    public function render()
+    public function render($customAttributes = null)
     {
-        if (empty($this->name)) {
-            $content = Html::link('#', $this->title, $this->attributes);
+        if ($customAttributes != null && count($customAttributes) > 0) {
+            $attributes = $customAttributes;
         } else {
-            $content = Html::linkRoute($this->name, $this->title, $this->parameters, $this->attributes);
+            $attributes = $this->attributes;
+
+            if (count(MenuHelper::getConfig()->getAnchorElementClasses()) > 0) {
+                if (!array_key_exists('class', $attributes)) {
+                    $attributes['class'] = '';
+                }
+
+                foreach (MenuHelper::getConfig()->getAnchorElementClasses() as $listElementClass) {
+                    $attributes['class'] .= ' ' . $listElementClass;
+                }
+            }
+        }
+
+        if (empty($this->name)) {
+            $content = Html::link('#', $this->title, $attributes);
+        } else {
+            $content = Html::linkRoute($this->name, $this->title, $this->parameters, $attributes);
         }
 
         return $content;

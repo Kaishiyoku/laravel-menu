@@ -3,6 +3,7 @@
 use Collective\Html\HtmlFacade as Html;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;
+use Kaishiyoku\Menu\Config\Config;
 use Kaishiyoku\Menu\MenuHelper;
 
 class MenuContainer implements Renderable
@@ -28,22 +29,15 @@ class MenuContainer implements Renderable
     private $isVisible;
 
     /**
-     * @var array
-     */
-    private $navItemClasses;
-
-    /**
      * @param string|null $name
      * @param array $entries
      * @param array $attributes
-     * @param array $navItemClasses
      */
-    public function __construct($name = null, $entries, $attributes = [], $navItemClasses = [])
+    public function __construct($name = null, $entries, $attributes = [])
     {
         $this->name = $name;
         $this->entries = new Collection($entries);
         $this->attributes = $attributes;
-        $this->navItemClasses = $navItemClasses;
     }
 
     /**
@@ -93,13 +87,13 @@ class MenuContainer implements Renderable
             }
 
             if ($entry->isVisible()) {
-                if (count($this->navItemClasses) > 0) {
+                if (count(MenuHelper::getConfig()->getListElementClasses()) > 0) {
                     if (!array_key_exists('class', $entryAttributes)) {
                         $entryAttributes['class'] = '';
                     }
 
-                    foreach ($this->navItemClasses as $navItemClass) {
-                        $entryAttributes['class'] .= ' ' . $navItemClass;
+                    foreach (MenuHelper::getConfig()->getListElementClasses() as $listElementClass) {
+                        $entryAttributes['class'] .= ' ' . $listElementClass;
                     }
                 }
 

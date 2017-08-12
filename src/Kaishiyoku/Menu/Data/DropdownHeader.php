@@ -1,6 +1,8 @@
 <?php namespace Kaishiyoku\Menu\Data;
 
 use Illuminate\Contracts\Support\Renderable;
+use Kaishiyoku\Menu\Config\Config;
+use Kaishiyoku\Menu\MenuHelper;
 
 class DropdownHeader extends MenuEntry implements Renderable
 {
@@ -27,10 +29,15 @@ class DropdownHeader extends MenuEntry implements Renderable
     /**
      * Get the evaluated contents of the object.
      *
+     * @param null|array $customAttributes
      * @return string
      */
-    public function render()
+    public function render($customAttributes = null)
     {
+        if (MenuHelper::getConfig()->getCustomDropdownHeaderRenderFunction() != null) {
+            return MenuHelper::getConfig()->getCustomDropdownHeaderRenderFunction()($this->title);
+        }
+
         return $this->title;
     }
 

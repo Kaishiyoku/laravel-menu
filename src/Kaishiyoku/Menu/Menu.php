@@ -2,6 +2,7 @@
 
 use Collective\Html\HtmlFacade as Html;
 use Illuminate\Support\Collection;
+use Kaishiyoku\Menu\Config\Config;
 use Kaishiyoku\Menu\Data\Content;
 use Kaishiyoku\Menu\Data\Dropdown;
 use Kaishiyoku\Menu\Data\DropdownDivider;
@@ -25,7 +26,13 @@ class Menu
 
     public function __construct()
     {
+        MenuHelper::storeConfig(new Config());
         $this->menus = new Collection();
+    }
+
+    public function setConfig(Config $config)
+    {
+        MenuHelper::storeConfig($config);
     }
 
     /**
@@ -34,10 +41,9 @@ class Menu
      * @param string|null $name
      * @param array $entries
      * @param array $attributes
-     * @param array $navItemClasses
      * @throws MenuExistsException
      */
-    public function register($name = null, $entries = [], $attributes = [], $navItemClasses = [])
+    public function register($name = null, $entries = [], $attributes = [])
     {
         if (empty($name)) {
             $name = self::DEFAULT_MENU_NAME;
@@ -53,7 +59,7 @@ class Menu
         }
 
         if (!$exists) {
-            $this->menus->push(new MenuContainer($name, $entries, $attributes, $navItemClasses));
+            $this->menus->push(new MenuContainer($name, $entries, $attributes));
         } else {
             throw new MenuExistsException($name);
         }
@@ -64,12 +70,11 @@ class Menu
      *
      * @param array $entries
      * @param array $attributes
-     * @param array $navItemClasses
      * @throws MenuExistsException
      */
-    public function registerDefault($entries = [], $attributes = [], $navItemClasses = [])
+    public function registerDefault($entries = [], $attributes = [])
     {
-        $this->register(null, $entries, $attributes, $navItemClasses);
+        $this->register(null, $entries, $attributes);
     }
 
     /**

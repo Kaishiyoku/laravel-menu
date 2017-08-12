@@ -3,6 +3,7 @@
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Kaishiyoku\HtmlPurifier\HtmlPurifier;
+use Kaishiyoku\Menu\Config\Config;
 use Kaishiyoku\Menu\Data\Dropdown;
 use Kaishiyoku\Menu\Data\Link;
 use Kaishiyoku\Menu\Data\MenuContainer;
@@ -11,6 +12,11 @@ use Kaishiyoku\Menu\Exceptions\MenuNotFoundException;
 
 class MenuHelper
 {
+    /**
+     * @var Config
+     */
+    private static $config;
+
     private function __construct()
     {
 
@@ -61,5 +67,15 @@ class MenuHelper
         $purifier = new HtmlPurifier();
         
         return $purifier->purify($value);
+    }
+
+    public static function storeConfig(Config $config)
+    {
+        self::$config = $config;
+    }
+
+    public static function getConfig()
+    {
+        return self::$config;
     }
 }
