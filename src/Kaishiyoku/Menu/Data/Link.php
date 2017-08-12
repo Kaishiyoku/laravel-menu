@@ -64,7 +64,7 @@ class Link extends MenuEntry implements Renderable
     public function render($customAttributes = null)
     {
         if ($customAttributes != null && count($customAttributes) > 0) {
-            $attributes = $customAttributes;
+            $attributes = array_merge($this->attributes, $customAttributes);
         } else {
             $attributes = $this->attributes;
 
