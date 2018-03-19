@@ -1,4 +1,5 @@
-![Packagist](https://img.shields.io/packagist/v/kaishiyoku/laravel-menu.svg) ![Packagist](https://img.shields.io/packagist/dt/kaishiyoku/laravel-menu.svg)
+![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)
+ ![Packagist](https://img.shields.io/packagist/v/kaishiyoku/laravel-menu.svg) ![Packagist](https://img.shields.io/packagist/dt/kaishiyoku/laravel-menu.svg)
 
 Laravel 5 menus with automatic CSS highlighting
 
