@@ -14,7 +14,7 @@
     "illuminate/contracts": "5.*",
     "illuminate/routing": "5.*",
     "laravelcollective/html": "5.*",
-    "kaishiyoku/laravel-html-purifier": "1.*"
+    "kaishiyoku/laravel-html-purifier": "1.1.*"
   },
   "autoload": {
     "psr-4": {
