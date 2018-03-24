@@ -9,6 +9,7 @@ use Kaishiyoku\Menu\Data\Content;
 use Kaishiyoku\Menu\Data\Dropdown;
 use Kaishiyoku\Menu\Data\DropdownDivider;
 use Kaishiyoku\Menu\Data\DropdownHeader;
+use Kaishiyoku\Menu\Data\Link;
 use Kaishiyoku\Menu\Data\LinkRoute;
 use Kaishiyoku\Menu\Data\MenuContainer;
 use Kaishiyoku\Menu\Exceptions\MenuExistsException;
@@ -93,6 +94,11 @@ class Menu
     public function linkRoute($routeName, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [], $isVisible = true)
     {
         return new LinkRoute($routeName, $title, $parameters, $attributes, $additionalRouteNames, $isVisible);
+    }
+
+    public function link($url, $title = null, $attributes = [], $isVisible = true)
+    {
+        return new Link($url, $title, $attributes, $isVisible);
     }
 
     /**

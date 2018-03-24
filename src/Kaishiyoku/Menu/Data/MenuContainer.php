@@ -71,6 +71,8 @@ class MenuContainer implements Renderable
                 }
             } elseif ($entry instanceof Content) {
                 $entryAttributes['class'] = 'navbar-text';
+            } else if ($entry instanceof Link) {
+
             } else {
                 if (!array_key_exists('class', $entryAttributes)) {
                     $entryAttributes['class'] = '';
