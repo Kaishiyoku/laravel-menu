@@ -5,7 +5,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Kaishiyoku\Menu\Config\Config;
 use Kaishiyoku\Menu\MenuHelper;
 
-class Link extends MenuEntry implements Renderable
+class LinkRoute extends MenuEntry implements Renderable
 {
     /**
      * @var string

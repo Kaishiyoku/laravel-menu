@@ -7,7 +7,7 @@ use Kaishiyoku\Menu\Data\Content;
 use Kaishiyoku\Menu\Data\Dropdown;
 use Kaishiyoku\Menu\Data\DropdownDivider;
 use Kaishiyoku\Menu\Data\DropdownHeader;
-use Kaishiyoku\Menu\Data\Link;
+use Kaishiyoku\Menu\Data\LinkRoute;
 use Kaishiyoku\Menu\Data\MenuContainer;
 use Kaishiyoku\Menu\Exceptions\MenuExistsException;
 use Kaishiyoku\Menu\Exceptions\MenuNotFoundException;
@@ -86,11 +86,11 @@ class Menu
      * @param array $attributes
      * @param array $additionalRouteNames
      * @param bool $isVisible
-     * @return Link
+     * @return LinkRoute
      */
-    public function link($routeName, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [], $isVisible = true)
+    public function linkRoute($routeName, $title = null, $parameters = [], $attributes = [], $additionalRouteNames = [], $isVisible = true)
     {
-        return new Link($routeName, $title, $parameters, $attributes, $additionalRouteNames, $isVisible);
+        return new LinkRoute($routeName, $title, $parameters, $attributes, $additionalRouteNames, $isVisible);
     }
 
     /**

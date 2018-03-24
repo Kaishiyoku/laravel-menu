@@ -56,7 +56,7 @@ class MenuContainer implements Renderable
                 $entryAttributes['class'] = 'dropdown';
 
                 foreach ($entry->getEntries() as $dropdownEntry) {
-                    if ($dropdownEntry instanceof Link) {
+                    if ($dropdownEntry instanceof LinkRoute) {
                         foreach ($dropdownEntry->getAdditionalRouteNames() as $additionalRouteName) {
                             if (MenuHelper::isCurrentRoute($additionalRouteName)) {
                                 $entryAttributes['class'] .= ' active';
