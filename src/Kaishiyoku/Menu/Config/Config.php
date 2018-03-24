@@ -1,9 +1,8 @@
-<?php namespace Kaishiyoku\Menu\Config;
+<?php
 
-use Kaishiyoku\Menu\Data\Dropdown;
-use Kaishiyoku\Menu\Data\DropdownHeader;
+namespace Kaishiyoku\Menu\Config;
+
 use Kaishiyoku\Menu\Data\MenuEntry;
-use Kaishiyoku\Menu\MenuHelper;
 
 class Config
 {

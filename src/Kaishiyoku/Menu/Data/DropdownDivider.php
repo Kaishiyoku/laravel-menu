@@ -1,7 +1,8 @@
-<?php namespace Kaishiyoku\Menu\Data;
+<?php
+
+namespace Kaishiyoku\Menu\Data;
 
 use Illuminate\Contracts\Support\Renderable;
-use Kaishiyoku\Menu\Config\Config;
 use Kaishiyoku\Menu\MenuHelper;
 
 class DropdownDivider extends MenuEntry implements Renderable

@@ -1,4 +1,6 @@
-<?php namespace Kaishiyoku\Menu\Exceptions;
+<?php
+
+namespace Kaishiyoku\Menu\Exceptions;
 
 use Exception;
 

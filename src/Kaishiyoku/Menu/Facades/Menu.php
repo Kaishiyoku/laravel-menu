@@ -1,4 +1,6 @@
-<?php namespace Kaishiyoku\Menu\Facades;
+<?php
+
+namespace Kaishiyoku\Menu\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

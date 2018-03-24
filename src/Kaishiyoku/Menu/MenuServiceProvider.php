@@ -1,4 +1,6 @@
-<?php namespace Kaishiyoku\Menu;
+<?php
+
+namespace Kaishiyoku\Menu;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;

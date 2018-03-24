@@ -1,4 +1,6 @@
-<?php namespace Kaishiyoku\Menu;
+<?php
+
+namespace Kaishiyoku\Menu;
 
 use Collective\Html\HtmlFacade as Html;
 use Illuminate\Support\Collection;

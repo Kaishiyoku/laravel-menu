@@ -1,14 +1,10 @@
-<?php namespace Kaishiyoku\Menu;
+<?php
 
-use Illuminate\Support\Collection;
+namespace Kaishiyoku\Menu;
+
 use Illuminate\Support\Facades\Route;
 use Kaishiyoku\HtmlPurifier\HtmlPurifier;
 use Kaishiyoku\Menu\Config\Config;
-use Kaishiyoku\Menu\Data\Dropdown;
-use Kaishiyoku\Menu\Data\LinkRoute;
-use Kaishiyoku\Menu\Data\MenuContainer;
-use Kaishiyoku\Menu\Exceptions\MenuExistsException;
-use Kaishiyoku\Menu\Exceptions\MenuNotFoundException;
 
 class MenuHelper
 {

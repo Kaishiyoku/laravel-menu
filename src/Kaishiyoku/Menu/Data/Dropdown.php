@@ -5,7 +5,6 @@ namespace Kaishiyoku\Menu\Data;
 use Collective\Html\HtmlFacade as Html;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;
-use Kaishiyoku\Menu\Config\Config;
 use Kaishiyoku\Menu\MenuHelper;
 
 class Dropdown extends MenuEntry implements Renderable

@@ -1,8 +1,9 @@
-<?php namespace Kaishiyoku\Menu\Data;
+<?php
+
+namespace Kaishiyoku\Menu\Data;
 
 use Collective\Html\HtmlFacade as Html;
 use Illuminate\Contracts\Support\Renderable;
-use Kaishiyoku\Menu\Config\Config;
 use Kaishiyoku\Menu\MenuHelper;
 
 class LinkRoute extends MenuEntry implements Renderable
