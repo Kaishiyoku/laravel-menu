@@ -1,5 +1,12 @@
 # Change Log
 
+## [2.0.0](https://github.com/kaishiyoku/laravel-menu/tree/2.0.0) (2018-03-24)
+[Full Changelog](https://github.com/kaishiyoku/laravel-menu/compare/1.5.0...2.0.0)
+
+**Implemented enhancements:**
+
+- Add plain links [\#4](https://github.com/Kaishiyoku/laravel-menu/issues/4)
+
 ## [1.5.0](https://github.com/kaishiyoku/laravel-menu/tree/1.5.0) (2018-03-19)
 [Full Changelog](https://github.com/kaishiyoku/laravel-menu/compare/1.4.1...1.5.0)
 
