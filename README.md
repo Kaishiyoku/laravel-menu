@@ -6,6 +6,7 @@ Laravel 5 menus with automatic CSS highlighting
 Table of contents
 =================
 
+  * [Upgrade notices](#upgrade-notices)
   * [General](#general)
   * [Important Information](#important-information)
   * [Installation](#installation)
@@ -17,6 +18,12 @@ Table of contents
   * [License](#license)
   * [Author](#author)
 
+Upgrade notices
+===============
+
+Version 1.* to 2.*
+------------------
+  * `Menu::link` is now `Menu::linkRoute`
 
 General
 =======
@@ -134,21 +141,22 @@ Route::group(['middleware' => ['menus']], function () {
 <?php
 
 Menu::registerDefault([
-    Menu::link('home.index', 'Landing Page'),
-    Menu::link('home.news', 'News'),
-    Menu::link('home.about', 'About'),
+    Menu::linkRoute('home.index', 'Landing Page'),
+    Menu::linkRoute('home.news', 'News'),
+    Menu::linkRoute('home.about', 'About'),
     Menu::dropdown([
-        Menu::link('content.users', 'Users'),
-        Menu::link('content.articles', 'Articles'),
+        Menu::linkRoute('content.users', 'Users'),
+        Menu::linkRoute('content.articles', 'Articles'),
         Menu::dropdownDivider(),
         Menu::dropdownHeader('More Content'),
-        Menu::link('content.blog', 'Blog')
-    ], 'Content')
+        Menu::linkRoute('content.blog', 'Blog')
+    ], 'Content'),
+    Menu::link('https://www.google.com', 'Google'),
 ], ['class' => 'nav navbar-nav']);
 
 Menu::register('navbar-right', [
-    Menu::link('auth.login', 'Login'),
-    Menu::link('auth.register', 'Register')
+    Menu::linkRoute('auth.login', 'Login'),
+    Menu::linkRoute('auth.register', 'Register')
 ], ['class' => 'nav navbar-nav navbar-right']);
 
 Route::group(['middleware' => ['web']], function () {
