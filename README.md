@@ -43,7 +43,7 @@ Installation
 
 Composer
 --------
-Add ```"kaishiyoku/laravel-menu": "1.*"``` to your **composer.json**
+Add ```"kaishiyoku/laravel-menu": "2.*"``` to your **composer.json**
 by running ```composer require kaishiyoku/laravel-menu```.
 
 Update your dependencies by running ```composer update```.
