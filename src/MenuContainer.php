@@ -2,6 +2,8 @@
 
 namespace Kaishiyoku\LaravelMenu;
 
+use Okipa\LaravelHtmlHelper\HtmlAttributes;
+
 class MenuContainer
 {
     /**
