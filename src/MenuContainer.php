@@ -60,8 +60,13 @@ class MenuContainer
         $this->containerClasses = trim($this->containerClasses . ' ' . $containerClasses, ' ');
     }
 
-    public function link(string $route, ?string $title = null): void
+    /**
+     * @param string $route
+     * @param string|null $title
+     * @param bool $strict
+     */
+    public function link(string $route, ?string $title = null, bool $strict = false): void
     {
-        $this->entries->add(new Entry('laravel-menu::link', compact('route', 'title')));
+        $this->entries->add(new Entry('laravel-menu::link', compact('route', 'title'), $strict));
     }
 }
