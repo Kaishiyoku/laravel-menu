@@ -51,7 +51,7 @@ class LaravelMenu
             throw new MenuNotFoundException($name);
         }
 
-        $containerClasses = $menuContainer->getContainerClasses();
+        $containerClasses = $menuContainer->getContainerClasses()->toArray();
 
         $content = $menuContainer->getEntries()->reduce(function (string $carry, Entry $entry) {
             return $carry . $entry->render();
