@@ -126,6 +126,75 @@ class MenuContainer
     }
 
     /**
+     * @param bool $condition
+     * @param string $route
+     * @param string|null $title
+     * @param bool $strict
+     * @return self
+     */
+    public function linkIf(bool $condition, string $route, ?string $title = null, bool $strict = false): self
+    {
+        if ($condition) {
+            $this->link($route, $title, $strict);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param bool $condition
+     * @param string $title
+     * @param array $links
+     * @return $this
+     */
+    public function dropdownIf(bool $condition, string $title, array $links): self
+    {
+        if ($condition) {
+            $id = Str::slug($title);
+            $linkEntries = collect($links)->map(function ($title, $route) {
+                return $this->dropdownLink($route, $title);
+            });
+            $dropdownIsActiveFn = function () use ($linkEntries) {
+                return $linkEntries->reduce(function (bool $carry, Entry $linkEntry) {
+                    return $carry or $linkEntry->isCurrentRoute();
+                }, false);
+            };
+
+            $this->entries->add(new Entry('laravel-menu::dropdown', compact('id', 'title', 'linkEntries', 'dropdownIsActiveFn')));
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param bool $condition
+     * @param string $text
+     * @return $this
+     */
+    public function textIf(bool $condition, string $text): self
+    {
+        if ($condition) {
+            $this->entries->add(new Entry('laravel-menu::text', compact('text')));
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param bool $condition
+     * @param string $content
+     * @return $this
+     */
+    public function contentIf(bool $condition, string $content): self
+    {
+        if ($condition) {
+            $this->entries->add(new Entry('laravel-menu::content', compact('content')));
+        }
+
+        return $this;
+    }
+
+    /**
      * @param string $route
      * @param string|null $title
      * @return Entry
