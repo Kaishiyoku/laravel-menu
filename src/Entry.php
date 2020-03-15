@@ -47,7 +47,7 @@ class Entry
     /**
      * @return bool
      */
-    private function isCurrentRoute(): bool
+    public function isCurrentRoute(): bool
     {
         $currentRouteName = Route::currentRouteName();
         $routeName = $this->data->get('route');

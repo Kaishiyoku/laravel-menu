@@ -2,7 +2,7 @@
 
 namespace Kaishiyoku\LaravelMenu;
 
-use Okipa\LaravelHtmlHelper\HtmlAttributes;
+use Illuminate\Support\Str;
 
 class MenuContainer
 {
@@ -82,6 +82,28 @@ class MenuContainer
     }
 
     /**
+     * @param string $title
+     * @param array $links
+     * @return $this
+     */
+    public function dropdown(string $title, array $links): self
+    {
+        $id = Str::slug($title);
+        $linkEntries = collect($links)->map(function ($title, $route) {
+            return $this->dropdownLink($route, $title);
+        });
+        $dropdownIsActiveFn = function () use ($linkEntries) {
+            return $linkEntries->reduce(function (bool $carry, Entry $linkEntry) {
+                return $carry or $linkEntry->isCurrentRoute();
+            }, false);
+        };
+
+        $this->entries->add(new Entry('laravel-menu::dropdown', compact('id', 'title', 'linkEntries', 'dropdownIsActiveFn')));
+
+        return $this;
+    }
+
+    /**
      * @param string $text
      * @return $this
      */
@@ -101,5 +123,15 @@ class MenuContainer
         $this->entries->add(new Entry('laravel-menu::content', compact('content')));
 
         return $this;
+    }
+
+    /**
+     * @param string $route
+     * @param string|null $title
+     * @return Entry
+     */
+    private function dropdownLink(string $route, ?string $title = null): Entry
+    {
+        return new Entry('laravel-menu::dropdown_link', compact('route', 'title'), true);
     }
 }
