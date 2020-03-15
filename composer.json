@@ -15,7 +15,7 @@
     "illuminate/routing": "^6.0|^7.0",
     "illuminate/view": "^6.0|^7.0",
     "kaishiyoku/laravel-html-purifier": "^2.0.0",
-    "okipa/laravel-html-helper": "^1.3"
+    "cjstroud/classnames-php": "^1.0"
   },
   "autoload": {
     "psr-4": {

@@ -1,3 +1,3 @@
-<ul {{ htmlAttributes(['class' => 'navbar-nav ' . $containerClasses]) }}>
+<ul class="{{ classNames('navbar-nav', $containerClasses) }}">
     {!! $content !!}
 </ul>
