@@ -25,7 +25,7 @@ class LaravelMenu
      * @return MenuContainer
      * @throws MenuExistsException
      */
-    public function register(string $name): MenuContainer
+    public function register(string $name = 'main'): MenuContainer
     {
         if ($this->menus->get($name) !== null) {
             throw new MenuExistsException($name);
@@ -43,7 +43,7 @@ class LaravelMenu
      * @return string
      * @throws MenuNotFoundException
      */
-    public function render(string $name): string
+    public function render(string $name = 'main'): string
     {
         $menuContainer = $this->menus->get($name);
 
@@ -51,10 +51,12 @@ class LaravelMenu
             throw new MenuNotFoundException($name);
         }
 
+        $containerClasses = $menuContainer->getContainerClasses();
+
         $content = $menuContainer->getEntries()->reduce(function (string $carry, Entry $entry) {
             return $carry . $entry->render();
         }, '');
 
-        return view('laravel-menu::menu', compact('content'));
+        return view('laravel-menu::menu', compact('containerClasses', 'content'));
     }
 }
