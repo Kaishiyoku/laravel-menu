@@ -17,7 +17,7 @@ class MenuContainer
     private $entries;
 
     /**
-     * @var string|null
+     * @var \Illuminate\Support\Collection
      */
     private $containerClasses;
 
@@ -38,9 +38,9 @@ class MenuContainer
     }
 
     /**
-     * @return string|null
+     * @return \Illuminate\Support\Collection
      */
-    public function getContainerClasses(): ?string
+    public function getContainerClasses(): \Illuminate\Support\Collection
     {
         return $this->containerClasses;
     }
@@ -52,15 +52,18 @@ class MenuContainer
     {
         $this->entries = collect();
         $this->name = $name;
+        $this->containerClasses = collect();
     }
 
     /**
-     * @param string $containerClasses
+     * @param string|array $containerClasses
      * @return self
      */
-    public function addContainerClasses(string $containerClasses): self
+    public function addContainerClasses($containerClasses): self
     {
-        $this->containerClasses = trim($this->containerClasses . ' ' . $containerClasses, ' ');
+        collect(explode(' ', classNames($containerClasses)))->each(function ($containerClass) {
+            $this->containerClasses->add($containerClass);
+        });
 
         return $this;
     }
