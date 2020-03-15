@@ -15,6 +15,11 @@ class MenuContainer
     private $entries;
 
     /**
+     * @var string|null
+     */
+    private $containerClasses;
+
+    /**
      * @return string
      */
     public function getName(): string
@@ -31,6 +36,14 @@ class MenuContainer
     }
 
     /**
+     * @return string|null
+     */
+    public function getContainerClasses(): ?string
+    {
+        return $this->containerClasses;
+    }
+
+    /**
      * @param string $name
      */
     public function __construct(string $name)
@@ -39,7 +52,15 @@ class MenuContainer
         $this->name = $name;
     }
 
-    public function link(string $route, ?string $title = null)
+    /**
+     * @param string $containerClasses
+     */
+    public function addContainerClasses(string $containerClasses): void
+    {
+        $this->containerClasses = trim($this->containerClasses . ' ' . $containerClasses, ' ');
+    }
+
+    public function link(string $route, ?string $title = null): void
     {
         $this->entries->add(new Entry('laravel-menu::link', compact('route', 'title')));
     }

@@ -1,3 +1,3 @@
-<ul class="navbar-nav mr-auto">
+<ul class="navbar-nav {{ $containerClasses }}">
     {!! $content !!}
 </ul>
