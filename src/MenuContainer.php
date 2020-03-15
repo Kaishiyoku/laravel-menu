@@ -75,4 +75,15 @@ class MenuContainer
 
         return $this;
     }
+
+    /**
+     * @param string $content
+     * @return $this
+     */
+    public function content(string $content): self
+    {
+        $this->entries->add(new Entry('laravel-menu::content', compact('content')));
+
+        return $this;
+    }
 }
