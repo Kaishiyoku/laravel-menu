@@ -77,6 +77,17 @@ class MenuContainer
     }
 
     /**
+     * @param string $text
+     * @return $this
+     */
+    public function text(string $text): self
+    {
+        $this->entries->add(new Entry('laravel-menu::text', compact('text')));
+
+        return $this;
+    }
+
+    /**
      * @param string $content
      * @return $this
      */
