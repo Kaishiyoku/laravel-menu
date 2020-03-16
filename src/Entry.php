@@ -2,8 +2,8 @@
 
 namespace Kaishiyoku\LaravelMenu;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Stringable;
 
 class Entry
 {
@@ -52,9 +52,7 @@ class Entry
         $currentRouteName = Route::currentRouteName();
         $routeName = $this->data->get('route');
         $routeFn = $this->strict ? function ($name) { return $name; } : function ($name) {
-            return (new Stringable($name))
-                ->explode('.')
-                ->first();
+            return Arr::first(explode('.', $name));
         };
 
         return $routeFn($currentRouteName) === $routeFn($routeName);
