@@ -187,8 +187,7 @@ class MenuContainer
      */
     public function contentIf(bool $condition, string $content): self
     {
-        if ($condition) {
-            $this->entries->add(new Entry('laravel-menu::content', compact('content')));
+        if ($condition) {$this->entries->add(new Entry('laravel-menu::content', compact('content')));
         }
 
         return $this;
