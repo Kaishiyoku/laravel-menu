@@ -59,4 +59,13 @@ class LaravelMenu
 
         return view('laravel-menu::menu', compact('containerClasses', 'content'));
     }
+
+    /**
+     * @param string $name
+     * @return boolean
+     */
+    public function exists(string $name): bool
+    {
+        return $this->menus->has($name);
+    }
 }
