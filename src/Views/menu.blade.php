@@ -1,3 +1,3 @@
-<ul class="{{ classNames('navbar-nav', $containerClasses) }}">
+<ul class="{{ classNames('navbar-nav', $classNames) }}">
     {!! $content !!}
 </ul>

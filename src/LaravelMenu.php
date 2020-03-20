@@ -54,13 +54,13 @@ class LaravelMenu
             throw new MenuNotFoundException($name);
         }
 
-        $containerClasses = $menuContainer->getContainerClasses()->toArray();
+        $classNames = $menuContainer->getClassNames()->toArray();
 
         $content = $menuContainer->getEntries()->reduce(function (string $carry, Entry $entry) use ($isHtmlPurifierDisabled, $htmlPurifier) {
             return $carry . ($isHtmlPurifierDisabled ? $entry->render() : $htmlPurifier->purify($entry->render()));
         }, '');
 
-        return view('laravel-menu::menu', compact('containerClasses', 'content'));
+        return view('laravel-menu::menu', compact('classNames', 'content'));
     }
 
     /**
