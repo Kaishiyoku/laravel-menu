@@ -22,11 +22,24 @@ class MenuContainer
     private $containerClasses;
 
     /**
+     * @var bool
+     */
+    private $htmlPurifierDisabled = false;
+
+    /**
      * @return string
      */
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHtmlPurifierDisabled(): bool
+    {
+        return $this->htmlPurifierDisabled;
     }
 
     /**
@@ -64,6 +77,16 @@ class MenuContainer
         collect(explode(' ', classNames($containerClasses)))->each(function ($containerClass) {
             $this->containerClasses->add($containerClass);
         });
+
+        return $this;
+    }
+
+    /**
+     * @return self
+     */
+    public function disableHtmlPurifier(): self
+    {
+        $this->htmlPurifierDisabled = true;
 
         return $this;
     }

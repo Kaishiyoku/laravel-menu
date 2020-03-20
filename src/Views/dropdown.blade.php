@@ -8,7 +8,7 @@
         aria-expanded="false"
         class="{{ classNames('nav-link dropdown-toggle', ['active' => $dropdownIsActiveFn()]) }}"
     >
-        {{ $title }}
+        {!! $title !!}
     </a>
     <div aria-labelledby="{{ $id }}" class="dropdown-menu">
         @foreach ($linkEntries as $linkEntry)

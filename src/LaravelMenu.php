@@ -2,6 +2,7 @@
 
 namespace Kaishiyoku\LaravelMenu;
 
+use Kaishiyoku\HtmlPurifier\HtmlPurifier;
 use Kaishiyoku\LaravelMenu\Exceptions\MenuExistsException;
 use Kaishiyoku\LaravelMenu\Exceptions\MenuNotFoundException;
 
@@ -45,7 +46,9 @@ class LaravelMenu
      */
     public function render(string $name = 'main'): string
     {
+        $htmlPurifier = new HtmlPurifier();
         $menuContainer = $this->menus->get($name);
+        $isHtmlPurifierDisabled = $menuContainer->isHtmlPurifierDisabled();
 
         if ($menuContainer === null) {
             throw new MenuNotFoundException($name);
@@ -53,8 +56,8 @@ class LaravelMenu
 
         $containerClasses = $menuContainer->getContainerClasses()->toArray();
 
-        $content = $menuContainer->getEntries()->reduce(function (string $carry, Entry $entry) {
-            return $carry . $entry->render();
+        $content = $menuContainer->getEntries()->reduce(function (string $carry, Entry $entry) use ($isHtmlPurifierDisabled, $htmlPurifier) {
+            return $carry . ($isHtmlPurifierDisabled ? $entry->render() : $htmlPurifier->purify($entry->render()));
         }, '');
 
         return view('laravel-menu::menu', compact('containerClasses', 'content'));
