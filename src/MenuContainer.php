@@ -223,7 +223,7 @@ class MenuContainer
      */
     private function dropdownLink(string $route, ?string $title = null): Entry
     {
-        $routes = collect(explode(',', $route));
+        $routes = collect(explode(',', trim($route, ',')));
 
         return new Entry('laravel-menu::dropdown_link', [
             'route' => $routes->first(),
