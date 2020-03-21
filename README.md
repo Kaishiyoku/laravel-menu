@@ -6,7 +6,7 @@ Laravel 5 menus with automatic CSS highlighting
 Table of contents
 =================
 
-  * [Upgrade notices](#upgrade-notices)
+  * [Version info](#version-info)
   * [General](#general)
   * [Important Information](#important-information)
   * [Installation](#installation)
@@ -18,19 +18,20 @@ Table of contents
   * [License](#license)
   * [Author](#author)
 
-Upgrade notices
-===============
 
-Version 1.* to 2.*
-------------------
-  * `Menu::link` is now `Menu::linkRoute`
+Version info
+============
+
+Version 4 is a complete rework of the package.
+Thus breaking changes were introduced.
+
 
 General
 =======
-Documentation: http://kaishiyoku.github.io/laravel-menu/
 
-This package helps defining and rendering menu structures.
+This package helps defining and rendering menu structures in Laravel.
 The main feature is the CSS highlighting of the active page.
+The package is coupled to Laravel and can't be used standalone.
 
 
 Important Information
@@ -43,23 +44,24 @@ Installation
 
 Composer
 --------
-Add ```"kaishiyoku/laravel-menu": "2.*"``` to your **composer.json**
-by running ```composer require kaishiyoku/laravel-menu```.
+Add ```"kaishiyoku/laravel-menu": "^4.0"``` to your **composer.json**
+by running ```composer require "kaishiyoku/laravel-menu": "^4.0"```.
 
 Update your dependencies by running ```composer update```.
 
 Laravel Configuration
 ---------------------
-Add ```Kaishiyoku\Menu\MenuServiceProvider::class,``` to the **providers** array  
-and ```'Menu' => Kaishiyoku\Menu\Facades\Menu::class,``` to the **aliases** array in **app/config/app.php**.
+
+The package supports Laravel auto-discovery but if you want you can add ```Kaishiyoku\LaravelMenu\ServiceProvider::class,``` to the **providers** array  
+and ```'Menu' => Kaishiyoku\LaravelMenu\Facade::class,``` to the **aliases** array in **app/config/app.php**.
+
 
 Usage
 =====
-Create the file at **app/Http/menus.php** and build up a new menu inside it (this only works for simple menus when you don't need any Laravel Facades or other things which have to be there at the request chain first).
 
-or
-
-Create a **app/Http/Middleware/Menus.php** middleware and add it to a new middleware group 'menus'. Please don't forget to add the newly created middleware group to your routes.php definitions.
+* generate a new middleware by using `php artisan make:middleware Menus`
+* add `\App\Http\Middleware\Menus::class,` to the Http Kernel in `$middlewareGroups` > `'web'`
+* add your menus to the `handle()` method in your Menus middleware
 
 **Example \App\Http\Middleware\Menus.php:**
 ```php
@@ -68,29 +70,9 @@ Create a **app/Http/Middleware/Menus.php** middleware and add it to a new middle
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
-use Kaishiyoku\Menu\Facades\Menu;
 
 class Menus
 {
-    /**
-     * The Guard implementation.
-     *
-     * @var Guard
-     */
-    protected $auth;
-
-    /**
-     * Create a new filter instance.
-     *
-     * @param  Guard  $auth
-     * @return void
-     */
-    public function __construct(Guard $auth)
-    {
-        $this->auth = $auth;
-    }
-
     /**
      * Handle an incoming request.
      *
@@ -100,7 +82,7 @@ class Menus
      */
     public function handle($request, Closure $next)
     {
-        // Define your menus here
+        // your menus go here
 
         return $next($request);
     }
@@ -109,97 +91,25 @@ class Menus
 
 **Edited \App\Http\Kernel:**
 ```php
+[...]
+
 protected $middlewareGroups = [
     'web' => [
         // [...]
-    ],
-
-    'menus' => [
         \App\Http\Middleware\Menus::class,
     ],
-
-    'api' => [
-        // [...]
-    ],
  ];
-```
 
-Update your routes so that they use the new middleware *menus*.
-
-**Example web.php**
-```php
-<?php
-
-Route::group(['middleware' => ['menus']], function () {
-    Route::get('/', 'HomeController@index')->name('home.index');
-    Route::get('/about', 'HomeController@about')->name('home.about');
-});
-```
-
-**Example menus.php:**
-```php
-<?php
-
-Menu::registerDefault([
-    Menu::linkRoute('home.index', 'Landing Page'),
-    Menu::linkRoute('home.news', 'News'),
-    Menu::linkRoute('home.about', 'About'),
-    Menu::dropdown([
-        Menu::linkRoute('content.users', 'Users'),
-        Menu::linkRoute('content.articles', 'Articles'),
-        Menu::dropdownDivider(),
-        Menu::dropdownHeader('More Content'),
-        Menu::linkRoute('content.blog', 'Blog')
-    ], 'Content'),
-    Menu::link('https://www.google.com', 'Google'),
-], ['class' => 'nav navbar-nav']);
-
-Menu::register('navbar-right', [
-    Menu::linkRoute('auth.login', 'Login'),
-    Menu::linkRoute('auth.register', 'Register')
-], ['class' => 'nav navbar-nav navbar-right']);
-
-Route::group(['middleware' => ['web']], function () {
-    Route::get('/index', function() {
-        return view('home.index'); // TODO
-    })->name('home.index');
-
-    Route::get('/news', function() {
-        return view('home.index'); // TODO
-    })->name('home.news');
-
-    Route::get('/about', function() {
-        return view('home.index'); // TODO
-    })->name('home.about');
-
-    Route::get('/content/users', function() {
-        return view('home.index'); // TODO
-    })->name('content.users');
-
-    Route::get('/content/articles', function() {
-        return view('home.index'); // TODO
-    })->name('content.articles');
-
-    Route::get('/content/articles/{id}', function($id) {
-        return view('home.index'); // TODO
-    })->name('content.show_article');
-
-    Route::get('/auth/login', function() {
-        return view('home.index'); // TODO
-    })->name('auth.login');
-
-    Route::get('/auth/register', function() {
-        return view('home.index'); // TODO
-    })->name('auth.register');
-});
+[...]
 ```
 
 To display the configured menus you have to call the render function somewhere in your Blade template:
+
 ```html
 <div id="navbar" class="collapse navbar-collapse">
-    {!! Menu::render() !!}
+    {!! \LaravelMenu::render() !!}
 
-    {!! Menu::render('navbar-right') !!}
+    {!! \LaravelMenu::render('navbar-right') !!}
 </div>
 ```
 
@@ -211,28 +121,59 @@ The result would look like this:
 
 If you have any issues feel free to open a ticket.
 
+Sample
+------
+
+```php
+\LaravelMenu::register()
+    ->disableXssFilter()
+    ->addClassNames(['mr-auto'])
+    ->link('users.index, 'All users')
+    ->dropdown('Comments', [
+        'comments.index' => 'All',
+        'comments.create' => 'Create',
+    ])
+```
+
+You can also use a condition whether the given menu entry should be rendered or not, example:
+
+```php
+\LaravelMenu::register()
+    ->linkIf(auth()->check(), 'users.index, 'All users')
+    ->dropdownIf(auth()->check(), 'Comments', [
+        'comments.index' => 'All',
+        'comments.create' => 'Create',
+    ])
+```
+
+Available methods
+-----------------
+
+* `disableXssFilter()` disables the integrated XSS filter
+* `addClassNames(string|array $classNames)` adds CSS class names to the navbar container
+* `link(string $route, ?string $title = null, bool $strict = false)`
+* `dropdown(string $title, array $links)`
+* `text(string $text)`
+* `content(string $content)`
+* `linkIf(bool $condition, string $route, ?string $title = null, bool $strict = false)`
+* `dropdownIf(bool $condition, string $title, array $links)`
+* `textIf(bool $condition, string $text)`
+* `contentIf(bool $condition, string $content)`
+
 
 Look & Feel
 ===========
-The default look and feel is based on Bootstrap 3, but you can change some of the CSS classes and attributes from outside (see the code snippets above).
 
-Bootstrap 4
------------
-Since version 1.4.0 Bootstrap 4 support has been added. To make it work you have to set the new config object for your menus before setting them up:
-
-```php
-Menu::setConfig(Config::forBootstrap4());
-
-// your menus go here
-Menu::registerDefault([]); // ...
-```
+Currently the look and feel is based on Bootstrap 4.
+In the future you will be able to customize the views and I'm also planning to add additional CSS frameworks from which you will be able to choose easily.
 
 License
 =======
+
 MIT (https://github.com/Kaishiyoku/laravel-menu/blob/master/LICENSE)
 
 
 Author
 ======
 Twitter: [@kaishiyoku](https://twitter.com/kaishiyoku)  
-Website: www.andreas-wiedel.de
+Website: https://andreas-wiedel.de
