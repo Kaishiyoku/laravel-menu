@@ -223,6 +223,12 @@ class MenuContainer
      */
     private function dropdownLink(string $route, ?string $title = null): Entry
     {
-        return new Entry('laravel-menu::dropdown_link', compact('route', 'title'), true);
+        $routes = collect(explode(',', $route));
+
+        return new Entry('laravel-menu::dropdown_link', [
+            'route' => $routes->first(),
+            'additionalRoutes' => $routes->skip(1),
+            'title' => $title,
+        ], true);
     }
 }

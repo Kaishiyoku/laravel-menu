@@ -49,12 +49,16 @@ class Entry
      */
     public function isCurrentRoute(): bool
     {
-        $currentRouteName = Route::currentRouteName();
-        $routeName = $this->data->get('route');
         $routeFn = $this->strict ? function ($name) { return $name; } : function ($name) {
             return Arr::first(explode('.', $name));
         };
 
-        return $routeFn($currentRouteName) === $routeFn($routeName);
+        $currentRouteName = $routeFn(Route::currentRouteName());
+        $routeName = $routeFn($this->data->get('route'));
+        $additionalRoutes = $this->data->get('additionalRoutes') ?? collect();
+
+        $additionalRouteNames = $additionalRoutes->mapWithKeys(function ($routeName) use ($routeFn) { return [$routeFn($routeName) => $routeFn($routeName)]; });
+
+        return $routeName === $currentRouteName || $additionalRouteNames->has($currentRouteName);
     }
 }
