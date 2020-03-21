@@ -24,7 +24,7 @@ class MenuContainer
     /**
      * @var bool
      */
-    private $htmlPurifierDisabled = false;
+    private $isXssFilterDisabled = false;
 
     /**
      * @return string
@@ -37,9 +37,9 @@ class MenuContainer
     /**
      * @return bool
      */
-    public function isHtmlPurifierDisabled(): bool
+    public function isXssFilterDisabled(): bool
     {
-        return $this->htmlPurifierDisabled;
+        return $this->isXssFilterDisabled;
     }
 
     /**
@@ -84,9 +84,9 @@ class MenuContainer
     /**
      * @return self
      */
-    public function disableHtmlPurifier(): self
+    public function disableXssFilter(): self
     {
-        $this->htmlPurifierDisabled = true;
+        $this->isXssFilterDisabled = true;
 
         return $this;
     }

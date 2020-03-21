@@ -2,9 +2,11 @@
 
 namespace Kaishiyoku\LaravelMenu;
 
+use GrahamCampbell\Security\Facades\Security;
 use Kaishiyoku\LaravelMenu\Exceptions\MenuExistsException;
 use Kaishiyoku\LaravelMenu\Exceptions\MenuNotFoundException;
 use Kaishiyoku\HtmlPurifier\Facade as LaravelHtmlPurifier;
+use voku\helper\AntiXSS;
 
 class LaravelMenu
 {
@@ -46,8 +48,9 @@ class LaravelMenu
      */
     public function render(string $name = 'main'): string
     {
+        /*** @var MenuContainer $menuContainer */
         $menuContainer = $this->menus->get($name);
-        $isHtmlPurifierDisabled = $menuContainer->isHtmlPurifierDisabled();
+        $isXssFilterDisabled = $menuContainer->isXssFilterDisabled();
 
         if ($menuContainer === null) {
             throw new MenuNotFoundException($name);
@@ -55,8 +58,8 @@ class LaravelMenu
 
         $classNames = $menuContainer->getClassNames()->toArray();
 
-        $content = $menuContainer->getEntries()->reduce(function (string $carry, Entry $entry) use ($isHtmlPurifierDisabled) {
-            return $carry . ($isHtmlPurifierDisabled ? $entry->render() : LaravelHtmlPurifier::purify($entry->render()));
+        $content = $menuContainer->getEntries()->reduce(function (string $carry, Entry $entry) use ($isXssFilterDisabled) {
+            return $carry . ($isXssFilterDisabled ? $entry->render() : Security::clean($entry->render()));
         }, '');
 
         return view('laravel-menu::menu', compact('classNames', 'content'));
