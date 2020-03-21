@@ -7,6 +7,7 @@ Table of contents
 =================
 
   * [Version info](#version-info)
+  * [Minimum requirements](#minimum-requirements)
   * [General](#general)
   * [Important Information](#important-information)
   * [Installation](#installation)
@@ -23,6 +24,12 @@ Version info
 
 Version 4 is a complete rework of the package.
 Thus breaking changes were introduced.
+
+Minimum requirements
+====================
+
+* PHP >=7.2.5
+* Laravel ^6.0
 
 
 General
