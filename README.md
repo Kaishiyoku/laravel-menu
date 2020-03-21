@@ -126,13 +126,12 @@ Sample
 
 ```php
 \LaravelMenu::register()
-    ->disableXssFilter()
     ->addClassNames(['mr-auto'])
     ->link('users.index, 'All users')
     ->dropdown('Comments', [
         'comments.index' => 'All',
         'comments.create' => 'Create',
-    ])
+    ]);
 ```
 
 You can also use a condition whether the given menu entry should be rendered or not, example:
@@ -143,7 +142,17 @@ You can also use a condition whether the given menu entry should be rendered or 
     ->dropdownIf(auth()->check(), 'Comments', [
         'comments.index' => 'All',
         'comments.create' => 'Create',
-    ])
+    ]);
+```
+
+For dropdown links you can define multiple routes so that a given link will be highlighted when one of those routes is being visited. The first route will be the route to where the link goes:
+
+```php
+\LaravelMenu::register()
+    ->dropdown('Comments', [
+        'comments.index,comments.top' => 'All',
+        'comments.create' => 'Create',
+    ]);
 ```
 
 Available methods
