@@ -14,7 +14,6 @@ Table of contents
     * [Laravel Configuration](#laravel-configuration)
   * [Usage](#usage)
   * [Look & Feel](#look--feel)
-    * [Bootstrap 4](#bootstrap-4)
   * [License](#license)
   * [Author](#author)
 
