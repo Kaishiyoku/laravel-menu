@@ -5,8 +5,6 @@ namespace Kaishiyoku\LaravelMenu;
 use GrahamCampbell\Security\Facades\Security;
 use Kaishiyoku\LaravelMenu\Exceptions\MenuExistsException;
 use Kaishiyoku\LaravelMenu\Exceptions\MenuNotFoundException;
-use Kaishiyoku\HtmlPurifier\Facade as LaravelHtmlPurifier;
-use voku\helper\AntiXSS;
 
 class LaravelMenu
 {
