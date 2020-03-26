@@ -187,7 +187,7 @@ class MenuContainer
     public function textIf(bool $condition, string $text): self
     {
         if ($condition) {
-            $this->entries->add(new Entry('laravel-menu::text', compact('text')));
+            $this->text($text);
         }
 
         return $this;
@@ -201,7 +201,7 @@ class MenuContainer
     public function contentIf(bool $condition, string $content): self
     {
         if ($condition) {
-            $this->entries->add(new Entry('laravel-menu::content', compact('content')));
+            $this->content($content);
         }
 
         return $this;
