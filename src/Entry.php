@@ -27,7 +27,7 @@ class Entry
      * @param array $data
      * @param bool $strict
      */
-    public function __construct(string $view, array $data, bool $strict = false)
+    public function __construct(string $view, array $data = [], bool $strict = false)
     {
         $this->view = $view;
         $this->data = collect($data);

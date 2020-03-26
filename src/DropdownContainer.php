@@ -57,4 +57,14 @@ class DropdownContainer
 
         return $this;
     }
+
+    /**
+     * @return $this
+     */
+    public function divider(): self
+    {
+        $this->entries->add(new Entry('laravel-menu::dropdown_divider'));
+
+        return $this;
+    }
 }
