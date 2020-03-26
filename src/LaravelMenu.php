@@ -71,4 +71,12 @@ class LaravelMenu
     {
         return $this->menus->has($name);
     }
+
+    /**
+     * @return DropdownContainer
+     */
+    public function dropdownContainer(): DropdownContainer
+    {
+        return new DropdownContainer();
+    }
 }

@@ -11,8 +11,8 @@
         {!! $title !!}
     </a>
     <div aria-labelledby="{{ $id }}" class="dropdown-menu">
-        @foreach ($linkEntries as $linkEntry)
-            {!! $linkEntry->render() !!}
+        @foreach ($entries as $entry)
+            {!! $entry->render() !!}
         @endforeach
     </div>
 </li>
