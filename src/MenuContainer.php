@@ -167,23 +167,13 @@ class MenuContainer
     /**
      * @param bool $condition
      * @param string $title
-     * @param array $links
+     * @param DropdownContainer $dropdownContainer
      * @return $this
      */
-    public function dropdownIf(bool $condition, string $title, array $links): self
+    public function dropdownIf(bool $condition, string $title, DropdownContainer $dropdownContainer): self
     {
         if ($condition) {
-            $id = Str::slug($title);
-            $linkEntries = collect($links)->map(function ($title, $route) {
-                return $this->dropdownLink($route, $title);
-            });
-            $dropdownIsActiveFn = function () use ($linkEntries) {
-                return $linkEntries->reduce(function (bool $carry, Entry $linkEntry) {
-                    return $carry or $linkEntry->isCurrentRoute();
-                }, false);
-            };
-
-            $this->entries->add(new Entry('laravel-menu::dropdown', compact('id', 'title', 'linkEntries', 'dropdownIsActiveFn')));
+            $this->dropdown($title, $dropdownContainer);
         }
 
         return $this;
@@ -215,21 +205,5 @@ class MenuContainer
         }
 
         return $this;
-    }
-
-    /**
-     * @param string $route
-     * @param string|null $title
-     * @return Entry
-     */
-    private function dropdownLink(string $route, ?string $title = null): Entry
-    {
-        $routes = collect(explode(',', trim($route, ',')));
-
-        return new Entry('laravel-menu::dropdown_link', [
-            'route' => $routes->first(),
-            'additionalRoutes' => $routes->skip(1),
-            'title' => $title,
-        ], true);
     }
 }
