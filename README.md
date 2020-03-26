@@ -133,7 +133,7 @@ Sample
 ```php
 \LaravelMenu::register()
     ->addClassNames(['mr-auto'])
-    ->link('users.index, 'All users')
+    ->link('users.index', 'All users')
     ->dropdown('Comments', [
         'comments.index' => 'All',
         'comments.create' => 'Create',
