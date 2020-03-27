@@ -155,10 +155,12 @@ For dropdown links you can define multiple routes so that a given link will be h
 
 ```php
 \LaravelMenu::register()
-    ->dropdown('Comments', [
-        'comments.index,comments.top' => 'All',
-        'comments.create' => 'Create',
-    ]);
+    ->dropdown('Comments', \LaravelMenu::dropdownContainer()
+        ->header('General')
+        ->link('comments.index,comments.top,comments.show', 'All')
+        ->divider()
+        ->link('comments.create', 'Create')
+);
 ```
 
 Available methods
