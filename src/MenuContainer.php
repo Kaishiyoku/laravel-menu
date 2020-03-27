@@ -99,7 +99,13 @@ class MenuContainer
      */
     public function link(string $route, ?string $title = null, bool $strict = false): self
     {
-        $this->entries->add(new Entry('laravel-menu::link', compact('route', 'title'), $strict));
+        $routes = collect(explode(',', trim($route, ',')));
+
+        $this->entries->add(new Entry('laravel-menu::link', [
+            'route' => $routes->first(),
+            'additionalRoute' => $routes->skip(1),
+            'title' => $title,
+        ], $strict));
 
         return $this;
     }
