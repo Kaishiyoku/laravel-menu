@@ -103,7 +103,7 @@ class MenuContainer
 
         $this->entries->add(new Entry('laravel-menu::link', [
             'route' => $routes->first(),
-            'additionalRoute' => $routes->skip(1),
+            'additionalRoutes' => $routes->skip(1),
             'title' => $title,
         ], $strict));
 
