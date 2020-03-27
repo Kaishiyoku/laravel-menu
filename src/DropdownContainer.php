@@ -67,4 +67,46 @@ class DropdownContainer
 
         return $this;
     }
+
+    /**
+     * @param bool $condition
+     * @param string $route
+     * @param string|null $title
+     * @return $this
+     */
+    public function linkIf(bool $condition, string $route, ?string $title = null): self
+    {
+        if ($condition) {
+            $this->link($route, $title);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param bool $condition
+     * @param string $title
+     * @return $this
+     */
+    public function headerIf(bool $condition, string $title): self
+    {
+        if ($condition) {
+            $this->header($title);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param bool $condition
+     * @return $this
+     */
+    public function dividerIf(bool $condition): self
+    {
+        if ($condition) {
+            $this->divider();
+        }
+
+        return $this;
+    }
 }
