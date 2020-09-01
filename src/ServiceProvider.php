@@ -15,9 +15,9 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/Views', 'laravel-menu');
 
-//        $this->publishes([
-//            __DIR__ . '/Views' => resource_path('views/vendor/laravel-menu'),
-//        ], 'views');
+        $this->publishes([
+            __DIR__ . '/Views' => resource_path('views/vendor/laravel-menu'),
+        ], 'views');
     }
 
     /**
