@@ -23,6 +23,11 @@ class Entry
     private $strict;
 
     /**
+     * @var bool
+     */
+    private $isCurrentRouteCheckEnabled = true;
+
+    /**
      * @param string $view
      * @param array $data
      * @param bool $strict
@@ -32,6 +37,11 @@ class Entry
         $this->view = $view;
         $this->data = collect($data);
         $this->strict = $strict;
+    }
+
+    public function disableRouteCheck(): void
+    {
+        $this->isCurrentRouteCheckEnabled = false;
     }
 
     /**
@@ -49,6 +59,10 @@ class Entry
      */
     public function isCurrentRoute(): bool
     {
+        if (!$this->isCurrentRouteCheckEnabled) {
+            return false;
+        }
+
         $routeFn = $this->strict ? function ($name) { return $name; } : function ($name) {
             return Arr::first(explode('.', $name));
         };

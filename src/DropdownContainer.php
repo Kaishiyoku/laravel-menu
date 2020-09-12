@@ -2,8 +2,6 @@
 
 namespace Kaishiyoku\LaravelMenu;
 
-use Illuminate\Support\Str;
-
 class DropdownContainer
 {
     /**
@@ -51,9 +49,12 @@ class DropdownContainer
      */
     public function header(string $title): self
     {
-        $this->entries->add(new Entry('laravel-menu::dropdown_header', [
+        $entry = new Entry('laravel-menu::dropdown_header', [
             'title' => $title,
-        ]));
+        ]);
+        $entry->disableRouteCheck();
+
+        $this->entries->add($entry);
 
         return $this;
     }
@@ -63,7 +64,10 @@ class DropdownContainer
      */
     public function divider(): self
     {
-        $this->entries->add(new Entry('laravel-menu::dropdown_divider'));
+        $entry = new Entry('laravel-menu::dropdown_divider');
+        $entry->disableRouteCheck();
+
+        $this->entries->add($entry);
 
         return $this;
     }
