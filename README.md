@@ -169,12 +169,12 @@ Available methods
 * `addClassNames(string|array $classNames)` adds CSS class names to the menu container
 * `disableXssFilter()` disables the integrated XSS filter
 * `link(string $route, ?string $title = null, bool $strict = false)`
- * you can also use a comma-seperated $route list (eg. `entries.index,entries.create,entries.create`)
+  * you can also use a comma-seperated $route list (eg. `entries.index,entries.create,entries.create`)
 * `dropdown(string $title, DropdownContainer $dropdownContainer)`
- * The DropdownContainer class has the following methods available:
- * `link(string $route, ?string $title = null)`
- * `header(string $title)`
- * `divider()`
+  * The DropdownContainer class has the following methods available:
+  * `link(string $route, ?string $title = null)`
+  * `header(string $title)`
+  * `divider()`
 * `text(string $text)`
 * `content(string $content)`
 
