@@ -166,23 +166,31 @@ For dropdown links you can define multiple routes so that a given link will be h
 Available methods
 -----------------
 
+* `addClassNames(string|array $classNames)` adds CSS class names to the menu container
 * `disableXssFilter()` disables the integrated XSS filter
-* `addClassNames(string|array $classNames)` adds CSS class names to the navbar container
 * `link(string $route, ?string $title = null, bool $strict = false)`
-* `dropdown(string $title, array $links)`
+ * you can also use a comma-seperated $route list (eg. `entries.index,entries.create,entries.create`)
+* `dropdown(string $title, DropdownContainer $dropdownContainer)`
+ * The DropdownContainer class has the following methods available:
+ * `link(string $route, ?string $title = null)`
+ * `header(string $title)`
+ * `divider()`
 * `text(string $text)`
 * `content(string $content)`
-* `linkIf(bool $condition, string $route, ?string $title = null, bool $strict = false)`
-* `dropdownIf(bool $condition, string $title, array $links)`
-* `textIf(bool $condition, string $text)`
-* `contentIf(bool $condition, string $content)`
+
+➡ Every container method can also be called with a condition. Only if this condition is true the container will be rendered. (eg. `linkIf(bool $condition, string $route, ?string $title = null, bool $strict = false)`)
+
+MenuContainer: `linkIf`, `dropdownIf`, `textIf`, `contentIf`
+
+DropdownContainer: `linkIf`, `headerIf`, `dividerIf`
 
 
 Look & Feel
 ===========
 
-Currently the look and feel is based on Bootstrap 4.
-In the future you will be able to customize the views and I'm also planning to add additional CSS frameworks from which you will be able to choose easily.
+Currently the default look and feel is based on Bootstrap 4.
+
+You can customize every Blade component by publishing them (`php artisan vendor:publish --provider="Kaishiyoku\LaravelMenu\ServiceProvider"`)
 
 License
 =======
