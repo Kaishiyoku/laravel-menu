@@ -123,7 +123,7 @@ If the render() method is being called without parameters the default menu will 
 The menus must have unique names, otherwise an exception will be thrown.
 
 The result would look like this:
-![Screenshot 1](https://raw.githubusercontent.com/Kaishiyoku/laravel-menu/screenshots/screenshot1.png "Basic menu implementation")
+![Screenshot 1](https://i.imgur.com/LLYqa8k.png "Basic menu implementation")
 
 If you have any issues feel free to open a ticket.
 
